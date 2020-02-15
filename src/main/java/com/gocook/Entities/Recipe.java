@@ -1,8 +1,18 @@
 package com.GoCook.Entities;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.JoinTable;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.MapKeyJoinColumn;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -11,12 +21,20 @@ public class Recipe {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="recipe_id")
 	private int id = 0;
 	private String title = "";
 	private String instructions = "";
 	private String prepTime = "";
 	private String totalTime = "";
 	private String servingQty = "";
+	@ManyToMany
+	@JoinTable(name="categories_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
+	private List<Categories> categories;
+	@OneToMany
+	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
+	@MapKeyJoinColumn(name = "quantity_id")
+	private Map<Quantity, Ingredients> _eventToWorkAndInstrumentationMappers = new HashMap<>();
 	
 	public Recipe() {	}
 	
