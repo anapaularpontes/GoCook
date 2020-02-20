@@ -29,23 +29,26 @@ public class Recipe {
 	private String totalTime = "";
 	private String servingQty = "";
 	@ManyToMany
-	@JoinTable(name="categories_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
-	private List<Categories> categories;
+	@JoinTable(name="categorie_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
+	private List<Categorie> categories;
 	@OneToMany
 	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
 	@MapKeyJoinColumn(name = "quantity_id")
-	private Map<Quantity, Ingredients> _eventToWorkAndInstrumentationMappers = new HashMap<>();
+	private Map<Quantity, Ingredient> qty_ingredients = new HashMap<>();
 	
 	public Recipe() {	}
-	
-	public Recipe(int id, String title, String instructions, String prepTime, String totalTime, String servingQty) {
-		this.id = id;
+
+	public Recipe(String title, String instructions, String prepTime, String totalTime, String servingQty,
+			List<Categorie> categories, Map<Quantity, Ingredient> qty_ingredients) {
 		this.title = title;
 		this.instructions = instructions;
 		this.prepTime = prepTime;
 		this.totalTime = totalTime;
 		this.servingQty = servingQty;
+		this.categories = categories;
+		this.qty_ingredients = qty_ingredients;
 	}
+
 
 	public int getId() {
 		return id;
@@ -93,6 +96,22 @@ public class Recipe {
 
 	public void setServingQty(String servingQty) {
 		this.servingQty = servingQty;
+	}
+	
+	public List<Categorie> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Categorie> categories) {
+		this.categories = categories;
+	}
+
+	public Map<Quantity, Ingredient> getQty_ingredients() {
+		return qty_ingredients;
+	}
+
+	public void setQty_ingredients(Map<Quantity, Ingredient> qty_ingredients) {
+		this.qty_ingredients = qty_ingredients;
 	}
 	
 }

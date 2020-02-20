@@ -8,7 +8,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="ingredients")
-public class Ingredients {
+public class Ingredient {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -16,11 +16,9 @@ public class Ingredients {
 	private int id = 0;
 	private String name = "";
 	
-	public Ingredients() {	}
+	public Ingredient() {	}
 	
-	public Ingredients(int id, String name) {
-		super();
-		this.id = id;
+	public Ingredient(String name) {
 		this.name = name;
 	}
 

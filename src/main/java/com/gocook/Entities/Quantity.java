@@ -18,8 +18,7 @@ public class Quantity {
 	
 	public Quantity() {	}
 
-	public Quantity(int id, String quantity) {
-		this.id = id;
+	public Quantity(String quantity) {
 		this.quantity = quantity;
 	}
 
