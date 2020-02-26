@@ -8,11 +8,11 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.gocook</groupId>
+	<groupId>com.GoCook</groupId>
 	<artifactId>GoCook</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>GoCook</name>
-	<description>Demo project for Spring Boot</description>
+	<description>Project using Spring Boot</description>
 
 	<properties>
 		<java.version>1.8</java.version>
