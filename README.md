@@ -1,6 +1,6 @@
 # Go Cook
 
-## Instalation
+## Installation
 <ol>
     <li>Clone the repo: git clone https://github.com/anapaularpontes/GoCook</li>
     <li>Fire up ECLIPSE</li>
