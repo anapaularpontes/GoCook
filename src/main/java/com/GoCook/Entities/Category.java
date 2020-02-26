@@ -6,20 +6,28 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
+
+/**
+ * Represents the Category entity
+ * @author 300300914
+ *
+ */
 @Entity
 @Table(name="categories")
-public class Categorie {
+public class Category {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="categorie_id")
 	private int id = 0;
 	private String name = "";
+	private boolean active = true;
 	
-	public Categorie() { }
+	public Category() { }
 	
-	public Categorie(String name) {
+	public Category(String name) {
 		this.name = name;
+		this.active = true;
 	}
 
 	public int getId() {
@@ -36,6 +44,14 @@ public class Categorie {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override

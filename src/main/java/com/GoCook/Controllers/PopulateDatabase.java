@@ -6,11 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.GoCook.Boundaries.CategorieDAO;
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.IngredientDAO;
 import com.GoCook.Boundaries.QuantityDAO;
-import com.GoCook.Entities.Categorie;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Ingredient;
 import com.GoCook.Entities.Quantity;
 
@@ -18,7 +19,7 @@ import com.GoCook.Entities.Quantity;
 public class PopulateDatabase {
 	
 	@Autowired
-	CategorieDAO cDAO;
+	CategoryDAO cDAO;
 	
 	@Autowired
 	IngredientDAO iDAO;
@@ -28,22 +29,21 @@ public class PopulateDatabase {
 	
 	
 	@GetMapping("/start")
-	@ResponseBody
-	public String start() {
+	public String start(RedirectAttributes redirAttrs) {
 		
 		
 		/***************** Categories ***************/
-		ArrayList<Categorie> categoriesList = new ArrayList<>();
-		categoriesList.add(new Categorie("Breakfast")); //1
-		categoriesList.add(new Categorie("Lunch"));     //2
-		categoriesList.add(new Categorie("Dinner")); 	//3
-		categoriesList.add(new Categorie("Dessert")); 	//4
-		categoriesList.add(new Categorie("Healthy")); 	//5
-		categoriesList.add(new Categorie("Meat")); 		//6
-		categoriesList.add(new Categorie("Poultry"));   //7
-		categoriesList.add(new Categorie("Veggie"));	//8
+		ArrayList<Category> categoriesList = new ArrayList<>();
+		categoriesList.add(new Category("Breakfast")); 	//1
+		categoriesList.add(new Category("Lunch"));     	//2
+		categoriesList.add(new Category("Dinner")); 	//3
+		categoriesList.add(new Category("Dessert")); 	//4
+		categoriesList.add(new Category("Healthy")); 	//5
+		categoriesList.add(new Category("Meat")); 		//6
+		categoriesList.add(new Category("Poultry"));   	//7
+		categoriesList.add(new Category("Veggie"));		//8
 		
-		for(Categorie c : categoriesList) {
+		for(Category c : categoriesList) {
 			cDAO.save(c);
 		}
 		
@@ -105,15 +105,14 @@ public class PopulateDatabase {
 		
 		
 		
+		
 		/***************** User ***************/
 		
-		ArrayList<Categorie> categorie = (ArrayList<Categorie>) cDAO.getAllCategories();
-		String testPrint = "";
-		for(Categorie c : categorie) {
-			testPrint += c.toString();
-		}
+
 		
-		return testPrint;
+		
+		redirAttrs.addFlashAttribute("message", "The database has been populated");
+		return "redirect:/";
 	}
 	
 	

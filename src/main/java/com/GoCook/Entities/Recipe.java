@@ -30,7 +30,7 @@ public class Recipe {
 	private String servingQty = "";
 	@ManyToMany
 	@JoinTable(name="categorie_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
-	private List<Categorie> categories;
+	private List<Category> categories;
 	@OneToMany
 	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
 	@MapKeyJoinColumn(name = "quantity_id")
@@ -39,7 +39,7 @@ public class Recipe {
 	public Recipe() {	}
 
 	public Recipe(String title, String instructions, String prepTime, String totalTime, String servingQty,
-			List<Categorie> categories, Map<Quantity, Ingredient> qty_ingredients) {
+			List<Category> categories, Map<Quantity, Ingredient> qty_ingredients) {
 		this.title = title;
 		this.instructions = instructions;
 		this.prepTime = prepTime;
@@ -98,11 +98,11 @@ public class Recipe {
 		this.servingQty = servingQty;
 	}
 	
-	public List<Categorie> getCategories() {
+	public List<Category> getCategories() {
 		return categories;
 	}
 
-	public void setCategories(List<Categorie> categories) {
+	public void setCategories(List<Category> categories) {
 		this.categories = categories;
 	}
 

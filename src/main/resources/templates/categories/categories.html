@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+</head>
+<body>
+	<header th:replace="index/header.html"></header>
+		<h1>Categories</h1>
+		<table class="table">
+			<tr>
+				<th>Category</th>
+				<th>Action</th>
+			<tr>
+			<tr th:each="category : ${categories}">
+				<td th:text="${category.getName()}"></td> 
+				<td style="white-space: nowrap;">
+					<button th:data-category="${category.getId()}" type="button" class="btn-sm btn-primary"
+						 data-toggle="modal" data-target="#modalForm" th:data-method="PUT">Edit</button>
+					<form action="/categories" th:method="DELETE" style="display: inline;">
+						<input type="submit" class="btn-sm btn-warning" value="Delete">
+						<input type="hidden" th:value="${category.getId()}" id="deleteId" name="id">						
+					</form>
+				</td>
+			</tr>
+		</table>
+		<p class="text-right"><button data-category="0" type="button" class="btn-sm btn-secondary"
+						 data-toggle="modal" data-target="#modalForm" th:data-method="POST">Add category</button></p>
+						 
+		<!-- START MODAL -->
+		<div class="modal" tabindex="-1" role="dialog" id="modalForm">
+		  <div class="modal-dialog" role="document">
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <h5 class="modal-title" id="modalTitle"></h5>
+		        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		          <span aria-hidden="true">&times;</span>
+		        </button>
+		      </div>
+		      <div class="modal-body">
+		      	<form action="#" th:action="@{/categories}" th:object="${category}" method="POST" id="categoryForm">
+				  <div class="form-group">
+				  	<input type="hidden" th:field="*{Id}" id="txtId">
+				    <label for="txtCategory">Category</label>
+				    <input type="text" class="form-control" id="txtCategory" th:field="*{name}">
+				  </div>
+				  	<button type="submit" class="btn btn-primary">Save changes</button>
+		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				</form>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+		<!-- END MODAL -->
+		<script src="/script/category.js"></script>
+						 
+	<footer th:insert="index/footer.html"></footer>
+</body>
+</html>
