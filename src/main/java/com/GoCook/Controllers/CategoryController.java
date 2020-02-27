@@ -34,6 +34,7 @@ public class CategoryController {
 	
 	@GetMapping("/categories")
 	public String ShowAll(Model model) {
+		System.out.println("aaaaaaaaaaaaaaaaaaaaa");
 		model.addAttribute("category", new Category());
 		return "categories/categories";
 	}
@@ -54,6 +55,7 @@ public class CategoryController {
 	 */
 	@PostMapping("/categories")
 	public String createCategory(@ModelAttribute Category category) {
+		System.out.println("POST");
 		cDAO.save(category);
 		return "redirect:/categories";
 	}
@@ -68,7 +70,7 @@ public class CategoryController {
 		Category category_db = cDAO.findById(category.getId()).get();
 		category_db.setName(category.getName());
 		
-		System.out.println("POST");
+		System.out.println("PUT");
 		System.out.println(category_db);
 		cDAO.save(category_db);
 		return "redirect:/categories";
@@ -83,7 +85,7 @@ public class CategoryController {
 	public String deleteCategory(@ModelAttribute Category category) {
 		Category category_db = cDAO.findById(category.getId()).get();
 		category_db.setActive(false);
-		System.out.println("POST");
+		System.out.println("Delete");
 		System.out.println(category_db);
 		cDAO.save(category_db);
 		return "redirect:/categories";
