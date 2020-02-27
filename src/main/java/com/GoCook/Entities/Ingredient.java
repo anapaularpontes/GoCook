@@ -15,11 +15,13 @@ public class Ingredient {
 	@Column(name="ingredient_id")
 	private int id = 0;
 	private String name = "";
+	private boolean active = true;
 	
 	public Ingredient() {	}
 	
 	public Ingredient(String name) {
 		this.name = name;
+		this.active = true;
 	}
 
 	public int getId() {
@@ -37,5 +39,15 @@ public class Ingredient {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+	
+	
 		
 }

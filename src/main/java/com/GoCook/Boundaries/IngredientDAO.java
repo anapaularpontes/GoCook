@@ -9,6 +9,6 @@ import com.GoCook.Entities.Ingredient;
 @Component
 public interface IngredientDAO extends CrudRepository<Ingredient, Integer> {
 
-	@Query("SELECT i FROM Ingredient i ORDER BY i.name ASC")
+	@Query("SELECT i FROM Ingredient i WHERE i.active = true ORDER BY i.name ASC")
 	Iterable<Ingredient> getAllIngredients();
 }
