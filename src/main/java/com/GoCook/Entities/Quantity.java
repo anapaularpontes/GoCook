@@ -15,11 +15,13 @@ public class Quantity {
 	@Column(name="quantity_id")
 	private int id = 0;
 	private String quantity = "";
+	private boolean active = true;
 	
 	public Quantity() {	}
 
 	public Quantity(String quantity) {
 		this.quantity = quantity;
+		this.active = true;
 	}
 
 	public int getId() {
@@ -36,6 +38,14 @@ public class Quantity {
 
 	public void setQuantity(String quantity) {
 		this.quantity = quantity;
+	}
+
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 	
 	
