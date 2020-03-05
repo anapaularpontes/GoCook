@@ -13,6 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,8 +26,7 @@ public class Recipe {
 	private int id = 0;
 	private String title = "";
 	private String instructions = "";
-	private String prepTime = "";
-	private String totalTime = "";
+	private String time = "";
 	private String servingQty = "";
 	@ManyToMany
 	@JoinTable(name="categorie_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
@@ -35,20 +35,22 @@ public class Recipe {
 	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
 	@MapKeyJoinColumn(name = "quantity_id")
 	private Map<Quantity, Ingredient> qty_ingredients = new HashMap<>();
+	@OneToOne
+	private User user;
 	
 	public Recipe() {	}
 
-	public Recipe(String title, String instructions, String prepTime, String totalTime, String servingQty,
-			List<Category> categories, Map<Quantity, Ingredient> qty_ingredients) {
+	public Recipe(String title, String instructions, String time, String servingQty, List<Category> categories,
+			Map<Quantity, Ingredient> qty_ingredients, User user) {
+		super();
 		this.title = title;
 		this.instructions = instructions;
-		this.prepTime = prepTime;
-		this.totalTime = totalTime;
+		this.time = time;
 		this.servingQty = servingQty;
 		this.categories = categories;
 		this.qty_ingredients = qty_ingredients;
+		this.user = user;
 	}
-
 
 	public int getId() {
 		return id;
@@ -74,20 +76,12 @@ public class Recipe {
 		this.instructions = instructions;
 	}
 
-	public String getPrepTime() {
-		return prepTime;
+	public String getTime() {
+		return time;
 	}
 
-	public void setPrepTime(String prepTime) {
-		this.prepTime = prepTime;
-	}
-
-	public String getTotalTime() {
-		return totalTime;
-	}
-
-	public void setTotalTime(String totalTime) {
-		this.totalTime = totalTime;
+	public void setTime(String time) {
+		this.time = time;
 	}
 
 	public String getServingQty() {
@@ -113,5 +107,22 @@ public class Recipe {
 	public void setQty_ingredients(Map<Quantity, Ingredient> qty_ingredients) {
 		this.qty_ingredients = qty_ingredients;
 	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", time=" + time
+				+ ", servingQty=" + servingQty + ", categories=" + categories + ", qty_ingredients=" + qty_ingredients
+				+ ", user=" + user + "]";
+	}
+	
+	
 	
 }

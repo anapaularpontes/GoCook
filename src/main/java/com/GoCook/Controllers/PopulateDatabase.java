@@ -1,6 +1,11 @@
 package com.GoCook.Controllers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,9 +15,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.IngredientDAO;
 import com.GoCook.Boundaries.QuantityDAO;
+import com.GoCook.Boundaries.RecipeDAO;
+import com.GoCook.Boundaries.UserDAO;
 import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Ingredient;
 import com.GoCook.Entities.Quantity;
+import com.GoCook.Entities.Recipe;
+import com.GoCook.Entities.User;
 
 @Controller
 public class PopulateDatabase {
@@ -25,6 +34,12 @@ public class PopulateDatabase {
 	
 	@Autowired
 	QuantityDAO qDAO;
+	
+	@Autowired
+	RecipeDAO rDAO;
+	
+	@Autowired
+	UserDAO uDAO;
 	
 	
 	@GetMapping("/start")
@@ -99,15 +114,44 @@ public class PopulateDatabase {
 			qDAO.save(q);
 		}
 		
+		/***************** User ***************/
+		ArrayList<User> usersList = new ArrayList<>();
+		//usersList.add(new User("firstName", "lastName", "username", "password", "role"));
+		usersList.add(new User("Ana Paula", "Pontes", "ana.pontes@gocook.ca", "password123", "admin"));
+		usersList.add(new User("Herbert", "Dias", "herbert.dias@gocook.ca", "password123", "admin"));
+		usersList.add(new User("Miriam", "Nakiyingi", "miriam.nakiyingi@gmail.com", "password123", "user"));
+		usersList.add(new User("Rafael", "Pires", "rafael.pires@gmail.com", "password123", "user"));
+		
+		for(User u : usersList) {
+			uDAO.save(u);
+		}
 		
 		/***************** Recipe ***************/
 		
-		
-		
-		
-		/***************** User ***************/
-		
+		ArrayList<Recipe> recipesList = new ArrayList<>();
+		//Test
+		/*recipesList.add(new Recipe("Title",
+				"Instructions",
+				"Time", "# of servings",
+				new ArrayList<>(Arrays.asList(cDAO.findById(id of category).get(), cDAO.findById(id of category).get()), //categories
+				Stream.of(new Object[][] { 
+				    { qDAO.findById(id of quantity).get(), iDAO.findById(id of ingredient).get() }, // quantities and ingredients
+				}).collect(Collectors.toMap(data -> (Quantity) data[0], data -> (Ingredient) data[1])), 
+				uDAO.findById(id of user).get() )); */
 
+		recipesList.add(new Recipe("Title",
+				"Instructions",
+				"Time", "# of servings",
+				new ArrayList<>(Arrays.asList(cDAO.findById(1).get(), cDAO.findById(5).get())), //categories
+				Stream.of(new Object[][] { 
+				    { qDAO.findById(3).get(), iDAO.findById(3).get() }, 
+				    { qDAO.findById(4).get(), iDAO.findById(4).get() }, 
+				}).collect(Collectors.toMap(data -> (Quantity) data[0], data -> (Ingredient) data[1])),
+				uDAO.findById(1).get() ));
+		
+		for(Recipe r : recipesList) {
+			rDAO.save(r);
+		}
 		
 		
 		redirAttrs.addFlashAttribute("message", "The database has been populated");

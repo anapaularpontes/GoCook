@@ -104,6 +104,11 @@ public class User {
 	        }
 		return generatedPassword;
 	}
+
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", firstName=" + firstName + "]";
+	}
 	
 	
 	
