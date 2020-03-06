@@ -1,0 +1,49 @@
+@charset "ISO-8859-1";
+
+body {
+	background-color: #F4F4F4;
+	min-height: 100vh;
+	position: relative;
+}
+
+.btn-primary, .btn-primary:hover, .btn-primary:active:focus {
+	background-color: #8DA8BA !important;
+	border: #8DA8BA !important;
+}
+
+.btn-secondary, .btn-secondary:hover, .btn-secondary:active:focus {
+	background-color: #ABC4AA !important;
+	border: #ABC4AA !important;
+}
+
+.btn-warning, .btn-warning:hover, .btn-warning:active:focus {
+	background-color: #E2A7A3 !important;
+	border: #E2A7A3 !important;
+}
+
+button:disabled, button[disabled], button:disabled:hover{
+  border: 1px solid #999999 !important;
+  background-color: #cccccc !important;
+  color: #666666 !important;
+}
+
+
+header{
+	width: 100%;
+}
+
+header img{
+	width: 100%;
+  	height: auto;
+}
+
+footer {
+	position: absolute;
+    left: 0;
+    bottom: 0;
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    text-align: center;
+    background-color: #DCD0C0;
+}

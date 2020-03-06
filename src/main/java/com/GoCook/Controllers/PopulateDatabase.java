@@ -72,7 +72,17 @@ public class PopulateDatabase {
 		ingredientsList.add(new Ingredient("banana, mashed"));
 		ingredientsList.add(new Ingredient("blueberries"));
 		ingredientsList.add(new Ingredient("butter"));
-		ingredientsList.add(new Ingredient(""));
+		// ingredients for Tex-Mex Polenta Bowls
+		ingredientsList.add(new Ingredient("dry polenta"));
+		ingredientsList.add(new Ingredient("ground cumin"));
+		ingredientsList.add(new Ingredient("Sea salt"));
+		ingredientsList.add(new Ingredient("can black beans"));
+		ingredientsList.add(new Ingredient("purchased pico de gallo"));
+		ingredientsList.add(new Ingredient(" small avocado, halved, seeded, peeled, and sliced"));
+		ingredientsList.add(new Ingredient("finely chopped fresh cilantro"));
+		ingredientsList.add(new Ingredient("fresh jalapeño pepper"));
+		
+		
 		
 		for(Ingredient i : ingredientsList) {
 			iDAO.save(i);
@@ -131,7 +141,7 @@ public class PopulateDatabase {
 		ArrayList<Recipe> recipesList = new ArrayList<>();
 		//Test
 		/*recipesList.add(new Recipe("Title",
-				"Instructions",
+				new ArrayList<>(Arrays.asList("Instruction 1", "Instruction 2")),
 				"Time", "# of servings",
 				new ArrayList<>(Arrays.asList(cDAO.findById(id of category).get(), cDAO.findById(id of category).get()), //categories
 				Stream.of(new Object[][] { 
@@ -139,15 +149,18 @@ public class PopulateDatabase {
 				}).collect(Collectors.toMap(data -> (Quantity) data[0], data -> (Ingredient) data[1])), 
 				uDAO.findById(id of user).get() )); */
 
-		recipesList.add(new Recipe("Title",
-				"Instructions",
-				"Time", "# of servings",
+		/*recipesList.add(new Recipe("Title",
+				new ArrayList<>(Arrays.asList("Instruction 1", "Instruction 2")),
+				/*1) In a medium saucepan bring 4 cups water to boiling. Gradually whisk in polenta and cumin."
+						+ "Reduce heat to low; cook about 20 minutes or until mixture is thick and creamy, stirring occasionally. Remove pan from heat. Season with salt.",
+						"2)In a small saucepan warm beans over low heat. Divide polenta among four individual bowls. Top with beans, pico de gallo, avocado, cilantro, and jalapeño (if using).		
+				"30 Min", "4",
 				new ArrayList<>(Arrays.asList(cDAO.findById(1).get(), cDAO.findById(5).get())), //categories
 				Stream.of(new Object[][] { 
 				    { qDAO.findById(3).get(), iDAO.findById(3).get() }, 
 				    { qDAO.findById(4).get(), iDAO.findById(4).get() }, 
 				}).collect(Collectors.toMap(data -> (Quantity) data[0], data -> (Ingredient) data[1])),
-				uDAO.findById(1).get() ));
+				uDAO.findById(1).get() ));*/
 		
 		for(Recipe r : recipesList) {
 			rDAO.save(r);

@@ -105,10 +105,12 @@ public class User {
 		return generatedPassword;
 	}
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + "]";
+	public void setActive(boolean b) {
+		// TODO Auto-generated method stub
+		
 	}
+
+	
 	
 	
 	
