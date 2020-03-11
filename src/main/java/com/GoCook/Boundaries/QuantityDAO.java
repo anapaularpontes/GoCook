@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import com.GoCook.Entities.Quantity;
 
+/**
+ * Extends CrudRepository for Quantity Entity
+ * @author 300300914
+ *
+ */
 @Component
 public interface QuantityDAO extends CrudRepository<Quantity, Integer> {
 

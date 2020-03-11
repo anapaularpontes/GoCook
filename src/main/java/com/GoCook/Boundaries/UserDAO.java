@@ -7,6 +7,11 @@ import org.springframework.stereotype.Component;
 import com.GoCook.Entities.Category;
 import com.GoCook.Entities.User;
 
+/**
+ * Extends CrudRepository for User Entity
+ * @author 300300914
+ *
+ */
 @Component
 public interface UserDAO extends CrudRepository<User, Integer> {
 
