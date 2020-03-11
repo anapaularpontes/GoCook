@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,11 +27,13 @@ public class Recipe {
 	@Column(name="recipe_id")
 	private int id = 0;
 	private String title = "";
-	private String instructions = "";
+	@ElementCollection
+	@CollectionTable(name = "instructions", joinColumns=@JoinColumn(name="recipe_id"))
+	private List<String> instructions;
 	private String time = "";
 	private String servingQty = "";
 	@ManyToMany
-	@JoinTable(name="categorie_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="categorie_id"))
+	@JoinTable(name="category_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
 	private List<Category> categories;
 	@OneToMany
 	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
@@ -40,7 +44,7 @@ public class Recipe {
 	
 	public Recipe() {	}
 
-	public Recipe(String title, String instructions, String time, String servingQty, List<Category> categories,
+	public Recipe(String title, List<String> instructions, String time, String servingQty, List<Category> categories,
 			Map<Quantity, Ingredient> qty_ingredients, User user) {
 		super();
 		this.title = title;
@@ -68,11 +72,11 @@ public class Recipe {
 		this.title = title;
 	}
 
-	public String getInstructions() {
+	public List<String> getInstructions() {
 		return instructions;
 	}
 
-	public void setInstructions(String instructions) {
+	public void setInstructions(List<String> instructions) {
 		this.instructions = instructions;
 	}
 

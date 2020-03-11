@@ -6,27 +6,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 
-
-/**
- * Represents the Category entity
- * @author 300300914
- *
- */
 @Entity
-@Table(name="categories")
-public class Category {
+@Table(name="food_group")
+public class FoodGroup {
 	
 	@javax.persistence.Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="category_id")
+	@Column(name="foodGroup_id")
 	private int id = 0;
-	private String name = "";
+	private String foodGroup = "";
 	private boolean active = true;
 	
-	public Category() { }
+	public FoodGroup() {	}
 	
-	public Category(String name) {
-		this.name = name;
+	public FoodGroup(String foodGroup) {
+		this.foodGroup = foodGroup;
 		this.active = true;
 	}
 
@@ -38,12 +32,12 @@ public class Category {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getFoodGroup() {
+		return foodGroup;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setFoodGroup(String foodGroup) {
+		this.foodGroup = foodGroup;
 	}
 
 	public boolean isActive() {
@@ -56,9 +50,8 @@ public class Category {
 
 	@Override
 	public String toString() {
-		return "Categorie [id=" + id + ", name=" + name + "]";
+		return foodGroup;
 	}
 	
-	
-	
 }
+

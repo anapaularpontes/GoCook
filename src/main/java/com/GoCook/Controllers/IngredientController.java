@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.FoodGroupDAO;
 import com.GoCook.Boundaries.IngredientDAO;
+import com.GoCook.Entities.FoodGroup;
 import com.GoCook.Entities.Ingredient;
 
 
@@ -25,6 +27,8 @@ public class IngredientController {
 	
 	@Autowired
 	IngredientDAO iDAO;
+	@Autowired
+	FoodGroupDAO fgDAO;
 	
 	/**
 	 * Maps the /ingredients (list of all ingredients)
@@ -96,6 +100,15 @@ public class IngredientController {
 		} catch(Exception ex) {
 			return new Ingredient();
 		}
+	}
+	
+	/**
+	 * Makes food group list available in the view
+	 * @return List of food groups
+	 */
+	@ModelAttribute("foodGroups")
+	public Iterable<FoodGroup> getGroups() {
+		return fgDAO.getAllFoodGroups();
 	}
 
 }
