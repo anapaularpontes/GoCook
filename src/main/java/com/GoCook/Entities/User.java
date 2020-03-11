@@ -20,6 +20,7 @@ public class User {
 	private String emailAddress = "";
 	private String password = "";
 	private String role = "";
+	private boolean active = true;
 	
 	public User() {	}
 	
@@ -29,6 +30,7 @@ public class User {
 		this.emailAddress = emailAddress;
 		this.password = hashPassword(password);;
 		this.role = role;
+		this.active = true;
 	}
 
 	public int getId() {
@@ -105,15 +107,12 @@ public class User {
 		return generatedPassword;
 	}
 
-	public void setActive(boolean b) {
-		// TODO Auto-generated method stub
-		
+	public boolean isActive() {
+		return active;
 	}
 
-	
-	
-	
-	
-	
-	
+	public void setActive(boolean active) {
+		this.active = active;
+	}
+
 }

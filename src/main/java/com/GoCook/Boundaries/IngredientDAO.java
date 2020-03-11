@@ -6,6 +6,11 @@ import org.springframework.stereotype.Component;
 
 import com.GoCook.Entities.Ingredient;
 
+/**
+ * Extends CrudRepository for Ingredient Entity
+ * @author 300300914
+ *
+ */
 @Component
 public interface IngredientDAO extends CrudRepository<Ingredient, Integer> {
 
