@@ -15,11 +15,13 @@ $('#modalForm').on('show.bs.modal', function (event) {
 		}).done(function(data) {
 			document.getElementById("txtId").value = data.id;
 			document.getElementById("txtIngredient").value = data.name;
+			document.getElementById("txtFoodGroup").value = data.group.id;
 			modal.find("#modalTitle").text('Editing ingredient');
 		});
 	} else {
 		document.getElementById("txtId").value = 0;
 		document.getElementById("txtIngredient").value = "";
+		document.getElementById("txtFoodGroup").value = "";
 		modal.find("#modalTitle").text('Adding ingredient');
 	}
   })
