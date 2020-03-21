@@ -7,14 +7,13 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.FoodGroupDAO;
-import com.GoCook.Entities.Category;
-import com.GoCook.Entities.FoodGroup;
-import com.GoCook.Entities.Ingredient;
-
+import com.GoCook.Entities.FoodGroup;	
+	
 @Controller
 public class FoodGroupController {
 	
@@ -29,7 +28,7 @@ public class FoodGroupController {
 	 * @return the view 
 	 */
 	@GetMapping("/foodgroups")
-	public String ShowAll(Model model) {
+	public String showAll(Model model) {
 		model.addAttribute("foodgroup", new FoodGroup());
 		return "foodgroups/foodgroups";
 	}
@@ -55,6 +54,19 @@ public class FoodGroupController {
 		fgDAO.save(foodGroup_db);
 		return "redirect:/foodgroups";
 	}
+	
+	/**
+	 * Creates a new foodgroup
+	 * @param group The new foodgroup
+	 * @return The view /foodgroups
+	 */
+	@PostMapping("/foodgroups")
+	public String createFoodGroup(@ModelAttribute FoodGroup foodgroup) {
+		fgDAO.save(foodgroup);
+		return "redirect:/foodgroups";
+	}
+	
+	
 
 	/**
 	 * Delete (hide) category
