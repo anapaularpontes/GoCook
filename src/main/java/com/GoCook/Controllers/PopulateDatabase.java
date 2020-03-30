@@ -272,6 +272,21 @@ public class PopulateDatabase {
 		quantityList.add(new Quantity("2 tablespoons"));	//ID: 47
 		quantityList.add(new Quantity("10 ounces"));		//ID: 57
 		quantityList.add(new Quantity("16 ounces"));		//ID: 59
+		quantityList.add(new Quantity("1 pound"));		//ID: 52
+		quantityList.add(new Quantity("2 pounds"));		//ID: 53
+		quantityList.add(new Quantity("4 pounds"));		//ID: 54
+		quantityList.add(new Quantity("5 ounce"));		//ID: 55
+		quantityList.add(new Quantity("8 ounce"));		//ID: 56
+		quantityList.add(new Quantity("12 ounce"));		//ID: 58
+		quantityList.add(new Quantity("24 ounce"));		//ID: 60
+		quantityList.add(new Quantity("1 ball"));		//ID: 61
+		quantityList.add(new Quantity("1 pinch"));		//ID: 62
+		quantityList.add(new Quantity("1/2 stick"));		//ID: 63
+		quantityList.add(new Quantity("14 oz canned"));		//ID: 64
+		quantityList.add(new Quantity("250 grams"));		//ID: 65
+		quantityList.add(new Quantity("1 dash"));		//ID: 66
+		
+		
 		
 		for(Quantity q : quantityList) {
 			qDAO.save(q);
