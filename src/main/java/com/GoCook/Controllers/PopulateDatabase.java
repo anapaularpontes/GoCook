@@ -87,6 +87,7 @@ public class PopulateDatabase {
 		groupList.add(new FoodGroup("Dairy Alternatives"));	//ID: 18
 		groupList.add(new FoodGroup("Desserts & Snacks"));	//ID: 19
 		groupList.add(new FoodGroup("Beverages"));			//ID: 20
+		groupList.add(new FoodGroup("Pasta"));			    //ID: 21
 		
 		for(FoodGroup fg : groupList) {
 			fgDAO.save(fg);
@@ -160,11 +161,80 @@ public class PopulateDatabase {
 		ingredientsList.add(new Ingredient("coconut sugar", fgDAO.findById(5).get()));						//ID: 63
 		ingredientsList.add(new Ingredient("cooked black beans", fgDAO.findById(14).get()));				//ID: 64
 		
+		
 		// Herbert: 65 - 130
 		
 		// Miriam: 131 - 196
 		
 		// Rafael: 197 - 262
+		
+		ingredientsList.add(new Ingredient("rolled oats", fgDAO.findById(4).get()));				            //ID: 197
+		ingredientsList.add(new Ingredient("Roma tomatoes", fgDAO.findById(2).get()));				            //ID: 198
+		ingredientsList.add(new Ingredient("rosemary, dried", fgDAO.findById(2).get()));			            //ID: 199
+		ingredientsList.add(new Ingredient("russet potatoes, peeled and quartered", fgDAO.findById(2).get()));  //ID: 200
+		ingredientsList.add(new Ingredient("russet potatoes, wedges", fgDAO.findById(2).get()));	            //ID: 201
+		ingredientsList.add(new Ingredient("sake", fgDAO.findById(15).get()));				                    //ID: 202
+		ingredientsList.add(new Ingredient("salmon fillet", fgDAO.findById(8).get()));				            //ID: 203
+		ingredientsList.add(new Ingredient("salt", fgDAO.findById(12).get()));				                    //ID: 204
+		ingredientsList.add(new Ingredient("salt and pepper to taste", fgDAO.findById(12).get()));				//ID: 205
+		ingredientsList.add(new Ingredient("salt to taste", fgDAO.findById(12).get()));				            //ID: 206
+		ingredientsList.add(new Ingredient("scallops", fgDAO.findById(9).get()));				                //ID: 207
+		ingredientsList.add(new Ingredient("sea salt", fgDAO.findById(12).get()));				                //ID: 208
+		ingredientsList.add(new Ingredient("seedless Grapes", fgDAO.findById(3).get()));				        //ID: 209
+		ingredientsList.add(new Ingredient("semisweet chocolate chips", fgDAO.findById(19).get()));				//ID: 210
+		ingredientsList.add(new Ingredient("sesame oil", fgDAO.findById(11).get()));				            //ID: 211
+		ingredientsList.add(new Ingredient("sesame seeds ", fgDAO.findById(17).get()));				            //ID: 212
+		ingredientsList.add(new Ingredient("shell pasta", fgDAO.findById(21).get()));				            //ID: 213
+		ingredientsList.add(new Ingredient("shrimp ", fgDAO.findById(9).get()));				                //ID: 214
+		ingredientsList.add(new Ingredient("skim milk", fgDAO.findById(1).get()));				                //ID: 215
+		ingredientsList.add(new Ingredient("sliced almonds", fgDAO.findById(17).get()));				        //ID: 216
+		ingredientsList.add(new Ingredient("sliced cremini mushrooms", fgDAO.findById(2).get()));				//ID: 217
+		ingredientsList.add(new Ingredient("slices of bacon", fgDAO.findById(7).get()));				        //ID: 218
+		ingredientsList.add(new Ingredient("smoked paprika", fgDAO.findById(6).get()));				            //ID: 219
+		ingredientsList.add(new Ingredient("soy milk", fgDAO.findById(18).get()));				                //ID: 220
+		ingredientsList.add(new Ingredient("soy sauce", fgDAO.findById(13).get()));				                //ID: 221
+		ingredientsList.add(new Ingredient("sriracha", fgDAO.findById(13).get()));				                //ID: 222
+		ingredientsList.add(new Ingredient("sriracha sauce", fgDAO.findById(10).get()));				        //ID: 223
+		ingredientsList.add(new Ingredient("stalks scallions sliced", fgDAO.findById(2).get()));				//ID: 224
+		ingredientsList.add(new Ingredient("strawberry, frozen", fgDAO.findById(3).get()));				        //ID: 225
+		ingredientsList.add(new Ingredient("strongly brewed black coffee", fgDAO.findById(20).get()));		    //ID: 226
+		ingredientsList.add(new Ingredient("sweet paprika", fgDAO.findById(12).get()));				            //ID: 227
+		ingredientsList.add(new Ingredient("sweet smoked Spanish paprika", fgDAO.findById(12).get()));			//ID: 228
+		ingredientsList.add(new Ingredient("sweetened condensed milk", fgDAO.findById(1).get()));				//ID: 229
+		ingredientsList.add(new Ingredient("tahini", fgDAO.findById(10).get()));				                //ID: 230
+		ingredientsList.add(new Ingredient("thyme, dried", fgDAO.findById(6).get()));				            //ID: 231
+		ingredientsList.add(new Ingredient("tomato paste", fgDAO.findById(13).get()));				            //ID: 232
+		ingredientsList.add(new Ingredient("tomatoes, chopped", fgDAO.findById(2).get()));				        //ID: 233
+		ingredientsList.add(new Ingredient("tomatoes, sliced", fgDAO.findById(2).get()));						//ID: 234
+		ingredientsList.add(new Ingredient("turmeric powder", fgDAO.findById(12).get()));						//ID: 235
+		ingredientsList.add(new Ingredient("uncooked Arborio rice", fgDAO.findById(4).get()));					//ID: 236
+		ingredientsList.add(new Ingredient("unflavored plant milk", fgDAO.findById(20).get()));					//ID: 237
+		ingredientsList.add(new Ingredient("unflavored plant-based milk", fgDAO.findById(20).get()));			//ID: 238
+		ingredientsList.add(new Ingredient("unsalted butter", fgDAO.findById(1).get()));						//ID: 239
+		ingredientsList.add(new Ingredient("unsalted cashews", fgDAO.findById(17).get()));						//ID: 240
+		ingredientsList.add(new Ingredient("unsalted raw cashews", fgDAO.findById(17).get()));					//ID: 241
+		ingredientsList.add(new Ingredient("vanilla extract", fgDAO.findById(6).get()));						//ID: 242
+		ingredientsList.add(new Ingredient("vegan vegetable stock", fgDAO.findById(10).get()));					//ID: 243
+		ingredientsList.add(new Ingredient("vegetable oil", fgDAO.findById(11).get()));							//ID: 244
+		ingredientsList.add(new Ingredient("walnuts, chopped", fgDAO.findById(17).get()));						//ID: 245
+		ingredientsList.add(new Ingredient("water", fgDAO.findById(20).get()));									//ID: 246
+		ingredientsList.add(new Ingredient("water, cold", fgDAO.findById(20).get()));							//ID: 247
+		ingredientsList.add(new Ingredient("water, warm", fgDAO.findById(20).get()));							//ID: 248
+		ingredientsList.add(new Ingredient("whipping cream", fgDAO.findById(1).get()));							//ID: 249
+		ingredientsList.add(new Ingredient("white albacore tuna, drained", fgDAO.findById(8).get()));			//ID: 250
+		ingredientsList.add(new Ingredient("white chocolate chips", fgDAO.findById(19).get()));					//ID: 251
+		ingredientsList.add(new Ingredient("white kidney beans", fgDAO.findById(14).get()));					//ID: 252
+		ingredientsList.add(new Ingredient("white onions", fgDAO.findById(2).get()));							//ID: 253
+		ingredientsList.add(new Ingredient("white sugar", fgDAO.findById(5).get()));							//ID: 254
+		ingredientsList.add(new Ingredient("white vinegar", fgDAO.findById(10).get()));							//ID: 255
+		ingredientsList.add(new Ingredient("whole pitted dates, chopped", fgDAO.findById(3).get()));			//ID: 256
+		ingredientsList.add(new Ingredient("whole wheat tortillas", fgDAO.findById(4).get()));					//ID: 257
+		ingredientsList.add(new Ingredient("Worcestershire sauce", fgDAO.findById(13).get()));					//ID: 258
+		ingredientsList.add(new Ingredient("yellow onion diced", fgDAO.findById(2).get()));						//ID: 259
+		ingredientsList.add(new Ingredient("yuca flour", fgDAO.findById(4).get()));								//ID: 260
+		ingredientsList.add(new Ingredient("yuca, peeled  in piece", fgDAO.findById(14).get()));				//ID: 261
+		ingredientsList.add(new Ingredient("zucchini sliced", fgDAO.findById(2).get()));						//ID: 262
+		
 		
 		
 		for(Ingredient i : ingredientsList) {
