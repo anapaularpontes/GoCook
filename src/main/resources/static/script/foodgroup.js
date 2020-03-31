@@ -2,26 +2,24 @@
 
 $('#modalForm').on('show.bs.modal', function (event) {
 	let button = $(event.relatedTarget); // Button that triggered the modal
-	let ingredient = button.data('ingredient'); // Extract info from data-* attributes
+	let foodgroup = button.data('foodgroup'); // Extract info from data-* attributes
 	let method = button.data('method');
 	console.log('[METHOD]', method);
 	let inputMethod = `<input name="_method" type="hidden" value="${method}" />`;
-	$("#ingredientForm").append(inputMethod);
+	$("#foodGroupForm").append(inputMethod);
 	let modal = $(this);
-	if(ingredient!=0) {
+	if(foodgroup!=0) {
 		$.ajax({
 			dataType: "json",
-			url: "/ingredients/"+ingredient
+			url: "/foodgroup/"+foodgroup
 		}).done(function(data) {
 			document.getElementById("txtId").value = data.id;
-			document.getElementById("txtIngredient").value = data.name;
-			document.getElementById("txtFoodGroup").value = data.group.id;
-			modal.find("#modalTitle").text('Editing ingredient');
+			document.getElementById("txtFoodGroup").value = data.name;
+			modal.find("#modalTitle").text('Editing foodgroup');
 		});
 	} else {
 		document.getElementById("txtId").value = 0;
-		document.getElementById("txtIngredient").value = "";
 		document.getElementById("txtFoodGroup").value = "";
-		modal.find("#modalTitle").text('Adding ingredient');
+		modal.find("#modalTitle").text('Adding foodgroup');
 	}
   })

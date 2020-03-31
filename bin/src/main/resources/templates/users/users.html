@@ -5,28 +5,32 @@
 </head>
 <body>
 	<header th:replace="index/header.html"></header>
-		<h1>Ingredients</h1>
+		<h1>users</h1>
 		<table class="table">
 			<tr>
-				<th>Ingredient</th>
-				<th>Food Group</th>
+				<th>First Name</th>
+				<th>Last Name</th>
+				<th>User name</th>
+				<th>role</th>
 				<th>Action</th>
 			<tr>
-			<tr th:each="ingredient : ${ingredients}">
-				<td th:text="${ingredient.getName()}"></td>
-				<td th:text="${ingredient.getGroup().getFoodGroup()}"></td>
+			<tr th:each="user : ${users}">
+				<td th:text="${user.getFirstName()}"></td>
+				<td th:text="${user.getLastName()}"></td>
+				<td th:text="${user.getEmailAddress()}"></td>
+				<td th:text="${user.getRole()}"></td>  
 				<td style="white-space: nowrap;">
-					<button th:data-ingredient="${ingredient.getId()}" type="button" class="btn-sm btn-primary"
+					<button th:data-user="${user.getId()}" type="button" class="btn-sm btn-primary"
 						 data-toggle="modal" data-target="#modalForm" th:data-method="PUT">Edit</button>
-					<form action="/ingredients" th:method="DELETE" style="display: inline;">
+					<form action="/users" th:method="DELETE" style="display: inline;">
 						<input type="submit" class="btn-sm btn-warning" value="Delete">
-						<input type="hidden" th:value="${ingredient.getId()}" id="deleteId" name="id">						
+						<input type="hidden" th:value="${user.getId()}" id="deleteId" name="id">						
 					</form>
 				</td>
 			</tr>
 		</table>
-		<p class="text-right"><button data-ingredient="0" type="button" class="btn-sm btn-secondary"
-						 data-toggle="modal" data-target="#modalForm" th:data-method="POST">Add ingredient</button></p>
+		<p class="text-right"><button data-user="0" type="button" class="btn-sm btn-secondary"
+						 data-toggle="modal" data-target="#modalForm" th:data-method="POST">Add user</button></p>
 						 
 		<!-- START MODAL -->
 		<div class="modal" tabindex="-1" role="dialog" id="modalForm">
@@ -39,15 +43,11 @@
 		        </button>
 		      </div>
 		      <div class="modal-body">
-		      	<form action="#" th:action="@{/ingredients}" th:object="${ingredient}" method="POST" id="ingredientForm">
+		      	<form action="#" th:action="@{/users}" th:object="${user}" method="POST" id="userForm">
 				  <div class="form-group">
 				  	<input type="hidden" th:field="*{Id}" id="txtId">
-				    <label for="txtIngredient">Ingredient</label>
-				    <input type="text" class="form-control" id="txtIngredient" th:field="*{name}">
-				    <label for="txtFoodGroup">Food Group</label>
-				    <select id="txtFoodGroup" class="form-control" th:field="*{group}">
-						<option th:each="fg : ${foodGroups}"  th:value="${fg.id}" th:text="${fg.getFoodGroup()}"></option>
-		    		</select>
+				    <label for="txtuser">user</label>
+				    <input type="text" class="form-control" id="txtuser" th:field="*{firstName}">
 				  </div>
 				  	<button type="submit" class="btn btn-primary">Save changes</button>
 		        	<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -57,7 +57,7 @@
 		  </div>
 		</div>
 		<!-- END MODAL -->
-		<script src="/script/ingredient.js"></script>
+		<script src="/script/user.js"></script>
 						 
 	<footer th:insert="index/footer.html"></footer>
 </body>
