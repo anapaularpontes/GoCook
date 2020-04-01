@@ -6,30 +6,62 @@
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<!-- Custom Css -->
 	<link rel="stylesheet" href="/css/index.css">
 	<title>GoCook</title>
-</header>
+	
+	<div id="header-main-menu" class="header-main-menu header-sticky">
+		<div class="container">
+			<div class="row">
+				<nav class="site-nav">
+					<ul id="site-menu" class="site-menu" style="list-style-type:none">
+						<li><a class="navlink" href="/">Home</a></li>
+						<li><a href="#">Category</a>
+							<ul class="dropdown-menu-col-1" style="list-style-type:none">
+								<li><a class="navlink" href="/category/1/search">Breakfast</a></li>
+								<li><a class="navlink" href="/category/2/search">Lunch</a></li>
+								<li><a class="navlink" href="/category/3/search">Dinner</a></li>
+								<li><a class="navlink" href="/category/4/search">Dessert</a></li>
+								<li><a class="navlink" href="/category/5/search">Healthy</a></li>
+								<li><a class="navlink" href="/category/6/search">Meat</a></li>
+								<li><a class="navlink" href="/category/7/search">Poultry</a></li>
+								<li><a class="navlink" href="/category/8/search">Veggie</a></li>
+								<li><a class="navlink" href="/category/9/search">Seafood</a></li>
+							</ul>
+						</li>
+						<li><a href="category.html">Search by Ingredient</a></li>
+						<li><a href="#">Database</a>
+							<ul class="dropdown-menu-col-1" style="list-style-type:none">
+								<li><a class="nav-link" href="/start">Populate database</a></li>
+								<li><a class="nav-link" href="/categories">Categories</a></li>
+								<li><a class="nav-link" href="/ingredients">Ingredients</a></li>
+								<li><a class="nav-link" href="/quantities">Quantities</a></li>
+								<li><a class="nav-link" href="/foodgroups">Food Group</a></li>
+								<li><a class="nav-link" href="/users">Users</a></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
 
-<h1>Go Cook</h1>
+				<div class="nav-action-elements-layout1">
+					<ul>
+						<li>
+							<button type="button" class="login-btn" data-toggle="modal"
+								data-target="#myModal">Login </button>
+						</li>
+						<li><a href="submit-recipe.html" class="fill-btn">SUBMIT RECIPE</a></li>
+					</ul>
+				</div>
 
-<div class="container">
-	<div class="alert alert-info" 
-		th:if="${message != null}"
-		th:text="${message}">
-	</div>
-	<div class="alert alert-warning" 
-		th:if="${error != null}"
-		th:text="${error}">
-	</div>
-	<div class="row">
- 		<div class="col">
-			<nav class="nav flex-column">
-				<a class="nav-link" href="/start">Populate database</a>
-				<a class="nav-link" href="/categories">Categories</a>
-				<a class="nav-link" href="/ingredients">Ingredients</a>
-				<a class="nav-link" href="/quantities">Quantities</a>
-				<a class="nav-link" href="/foodgroups">Food Group</a>
-				<a class="nav-link" href="/users">Users</a>
-			</nav>
+			</div>
 		</div>
-   		<div class="col-10">
+	</div>
+	<div class="header-bottom d-none d-lg-block">
+		<div class="container">
+			<div class="site-logo-desktop">
+				<a href="index.html" class="main-logo"><img	src="img/gocook-logo.png" alt="Site Logo"></a>
+			</div>
+		</div>
+	</div>
+	
+</header>

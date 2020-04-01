@@ -11,6 +11,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyJoinColumn;
@@ -27,10 +28,13 @@ public class Recipe {
 	@Column(name="recipe_id")
 	private int id = 0;
 	private String title = "";
+	@Lob
+	private String image;
 	@ElementCollection
 	@CollectionTable(name = "instructions", joinColumns=@JoinColumn(name="recipe_id"))
 	private List<String> instructions;
-	private String time = "";
+	private String prepTime = "";
+	private String cookTime = "";
 	private String servingQty = "";
 	@ManyToMany
 	@JoinTable(name="category_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
@@ -44,12 +48,14 @@ public class Recipe {
 	
 	public Recipe() {	}
 
-	public Recipe(String title, List<String> instructions, String time, String servingQty, List<Category> categories,
+	public Recipe(String title, String image, List<String> instructions, String prepTime, String cookTime, String servingQty, List<Category> categories,
 			Map<Quantity, Ingredient> qty_ingredients, User user) {
 		super();
 		this.title = title;
+		this.image = image;
 		this.instructions = instructions;
-		this.time = time;
+		this.prepTime = prepTime;
+		this.cookTime = cookTime;
 		this.servingQty = servingQty;
 		this.categories = categories;
 		this.qty_ingredients = qty_ingredients;
@@ -71,6 +77,14 @@ public class Recipe {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public String getImage() {
+		return image;
+	}
+
+	public void setImage(String image) {
+		this.image = image;
+	}
 
 	public List<String> getInstructions() {
 		return instructions;
@@ -80,12 +94,20 @@ public class Recipe {
 		this.instructions = instructions;
 	}
 
-	public String getTime() {
-		return time;
+	public String getPrepTime() {
+		return prepTime;
 	}
 
-	public void setTime(String time) {
-		this.time = time;
+	public void setPrepTime(String prepTime) {
+		this.prepTime = prepTime;
+	}
+	
+	public String getCookTime() {
+		return cookTime;
+	}
+
+	public void setCookTime(String cookTime) {
+		this.cookTime = cookTime;
 	}
 
 	public String getServingQty() {
@@ -122,11 +144,9 @@ public class Recipe {
 
 	@Override
 	public String toString() {
-		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions + ", time=" + time
-				+ ", servingQty=" + servingQty + ", categories=" + categories + ", qty_ingredients=" + qty_ingredients
-				+ ", user=" + user + "]";
+		return "Recipe [id=" + id + ", title=" + title + ", instructions=" + instructions
+				+ ", prepTime=" + prepTime + ", cookTime=" + cookTime + ", servingQty=" + servingQty + ", categories="
+				+ categories + ", qty_ingredients=" + qty_ingredients + ", user=" + user + "]";
 	}
-	
-	
 	
 }
