@@ -165,6 +165,81 @@ public class PopulateDatabase {
 		// Herbert: 65 - 130
 		
 		// Miriam: 131 - 196
+		ingredientsList.add(new Ingredient("heavy cream", fgDAO.findById(18).get()));                       //ID:131
+		ingredientsList.add(new Ingredient("honey", fgDAO.findById(5).get()));                              //ID:132
+		ingredientsList.add(new Ingredient("hot chilli", fgDAO.findById(10).get()));                         //ID:133
+		ingredientsList.add(new Ingredient("hot pepper sauce", fgDAO.findById(13).get()));                   //ID:134
+		ingredientsList.add(new Ingredient("ice cream", fgDAO.findById(19).get()));                          //ID:135
+		ingredientsList.add(new Ingredient("instant yeast", fgDAO.findById(4).get()));                      //ID:136
+		ingredientsList.add(new Ingredient("italian dressing", fgDAO.findById(13).get()));                   //ID:137
+		ingredientsList.add(new Ingredient("italian seasoning", fgDAO.findById(6).get()));                  //ID:138
+		ingredientsList.add(new Ingredient("jalapeno chile peppe", fgDAO.findById(2).get()));               //ID:139
+		ingredientsList.add(new Ingredient("jarred roasted red peppers", fgDAO.findById(2).get()));         //ID:140
+		ingredientsList.add(new Ingredient("kosher salt", fgDAO.findById(12).get()));                        //ID:141
+		ingredientsList.add(new Ingredient("large eggs", fgDAO.findById(1).get()));                         //ID:142
+		ingredientsList.add(new Ingredient("leek sliced", fgDAO.findById(2).get()));                        //ID:143
+		ingredientsList.add(new Ingredient("lemon", fgDAO.findById(3).get()));                              //ID:144
+		ingredientsList.add(new Ingredient("lemon juice", fgDAO.findById(3).get()));                        //ID:145
+		ingredientsList.add(new Ingredient("lemon juice, fresh", fgDAO.findById(3).get()));                 //ID:146
+		ingredientsList.add(new Ingredient("lemon zest", fgDAO.findById(3).get()));                         //ID:147
+		ingredientsList.add(new Ingredient("lettuce", fgDAO.findById(2).get()));                            //ID:148
+		ingredientsList.add(new Ingredient("light brown sugar", fgDAO.findById(5).get()));                  //ID:149
+		ingredientsList.add(new Ingredient("light corn syrup", fgDAO.findById(5).get()));                   //ID:150
+		ingredientsList.add(new Ingredient("lime juice", fgDAO.findById(20).get()));                         //ID:151
+		ingredientsList.add(new Ingredient("low-sodium vegetable broth", fgDAO.findById(10).get()));         //ID:152
+		ingredientsList.add(new Ingredient("maple syrup", fgDAO.findById(5).get())) ;                       //ID:153
+		ingredientsList.add(new Ingredient("mashes bana", fgDAO.findById(3).get()));                        //ID:154
+		ingredientsList.add(new Ingredient("mayonnaise", fgDAO.findById(11).get()));                         //ID:155
+		ingredientsList.add(new Ingredient("medium red bell pepper", fgDAO.findById(2).get()));             //ID:156
+		ingredientsList.add(new Ingredient("milk", fgDAO.findById(1).get()));                               //ID:157
+		ingredientsList.add(new Ingredient("milk chocolate chips", fgDAO.findById(19).get()));               //ID:158
+		ingredientsList.add(new Ingredient("mirin", fgDAO.findById(10).get()));                              //ID:159
+		ingredientsList.add(new Ingredient("mushroom,sliced", fgDAO.findById(2).get()));                    //ID:160
+		ingredientsList.add(new Ingredient("mustard seeds", fgDAO.findById(17).get()));                      //ID:161
+		ingredientsList.add(new Ingredient("noodle pasta Spaghetti", fgDAO.findById(14).get()));             //ID:162
+		ingredientsList.add(new Ingredient("no-salt-added peanut butter", fgDAO.findById(17).get()));        //ID:163
+		ingredientsList.add(new Ingredient("nutritional yeast", fgDAO.findById(4).get()));                  //ID:164
+		ingredientsList.add(new Ingredient("oats, rolled", fgDAO.findById(4).get()));                       //ID:165
+		ingredientsList.add(new Ingredient("olive oil", fgDAO.findById(11).get()));                          //ID:166
+		ingredientsList.add(new Ingredient("onion", fgDAO.findById(2).get()));                              //ID:167
+		ingredientsList.add(new Ingredient("onion diced", fgDAO.findById(2).get()));                        //ID:168
+		ingredientsList.add(new Ingredient("onion powder", fgDAO.findById(6).get()));                       //ID:169
+		ingredientsList.add(new Ingredient("onion,diced", fgDAO.findById(2).get()));                        //ID:170
+		ingredientsList.add(new Ingredient("onion,thinly sliced", fgDAO.findById(2).get())) ;               //ID:171
+		ingredientsList.add(new Ingredient("onions, canned", fgDAO.findById(2).get()));                     //ID:172
+		ingredientsList.add(new Ingredient("orange zest", fgDAO.findById(3).get()));                        //ID:173
+		ingredientsList.add(new Ingredient("oregano, dried", fgDAO.findById(6).get()));                     //ID:174
+		ingredientsList.add(new Ingredient("oyster sauce", fgDAO.findById(13).get()));                       //ID:175
+		ingredientsList.add(new Ingredient("paprika", fgDAO.findById(6).get()));                            //ID:176
+		ingredientsList.add(new Ingredient("parsley", fgDAO.findById(2).get()));                            //ID:177
+		ingredientsList.add(new Ingredient("parnship", fgDAO.findById(2).get()));                           //ID:178
+		ingredientsList.add(new Ingredient("peaches", fgDAO.findById(3).get()));                            //ID:179
+		ingredientsList.add(new Ingredient("peeled,seeded,and diced butternut squash", fgDAO.findById(2).get()));//ID:180
+		ingredientsList.add(new Ingredient("pepper sauce", fgDAO.findById(13).get()));                       //ID:181
+		ingredientsList.add(new Ingredient("pepper to taste", fgDAO.findById(6).get()));                     //ID:182
+		ingredientsList.add(new Ingredient("potatoes", fgDAO.findById(2).get()));                            //ID:183
+		ingredientsList.add(new Ingredient("powdered sugar", fgDAO.findById(10).get()));                     //ID:184
+		ingredientsList.add(new Ingredient("ramen nooles", fgDAO.findById(21).get()));                       //ID:185
+		ingredientsList.add(new Ingredient("raspberries, frozen", fgDAO.findById(3).get()));                //ID:186
+		ingredientsList.add(new Ingredient("red bell pepper,diced", fgDAO.findById(2).get()));	            //ID:187						
+		ingredientsList.add(new Ingredient("red bell peppers", fgDAO.findById(3).get()));                   //ID:188				
+		ingredientsList.add(new Ingredient("red chilli powder", fgDAO.findById(12).get()));	                //ID:189				
+		ingredientsList.add(new Ingredient("red kidney beans", fgDAO.findById(14).get()));                  //ID:190					
+		ingredientsList.add(new Ingredient("red onions", fgDAO.findById(2).get()));                     	//ID:191							
+		ingredientsList.add(new Ingredient("red onions, sliced", fgDAO.findById(14).get()));                 //ID:192								
+		ingredientsList.add(new Ingredient("red potatoes", fgDAO.findById(2).get()));                        //ID:193								
+		ingredientsList.add(new Ingredient("red wine", fgDAO.findById(15).get()));                           //ID:194	
+		ingredientsList.add(new Ingredient("rice vinegar", fgDAO.findById(10).get()));                       //ID:195	
+		ingredientsList.add(new Ingredient("ripe banana", fgDAO.findById(3).get()));                          //ID:196	
+		
+		
+		
+		
+
+
+		
+
+		
 		
 		// Rafael: 197 - 262
 		
@@ -285,6 +360,20 @@ public class PopulateDatabase {
 		quantityList.add(new Quantity("14 oz canned"));		//ID: 64
 		quantityList.add(new Quantity("250 grams"));		//ID: 65
 		quantityList.add(new Quantity("1 dash"));		//ID: 66
+		
+		quantityList.add(new Quantity("1 can (6 ounce"));		//ID: 28
+		quantityList.add(new Quantity("1 can (15 ounce)"));		//ID: 29
+		quantityList.add(new Quantity("1 can (16 ounce"));		//ID: 30
+		quantityList.add(new Quantity("3/4 teaspoon"));		    //ID: 33
+		quantityList.add(new Quantity("1 1/8 teaspoon"));		//ID: 35
+		quantityList.add(new Quantity("3 1/2 teaspoons"));		//ID: 58
+		quantityList.add(new Quantity("3 slices"));		        //ID: 39
+		quantityList.add(new Quantity("10 slices"));		    //ID: 41
+		quantityList.add(new Quantity("1/3 tablespoon"));		//ID: 43
+		quantityList.add(new Quantity("3 tablspoons"));		    //ID: 48
+		quantityList.add(new Quantity("4 tablespoons"));		//ID: 49
+		quantityList.add(new Quantity("1/2 lb"));		       //ID: 50
+		quantityList.add(new Quantity("1 lb"));		           //ID: 51
 		
 		
 		
