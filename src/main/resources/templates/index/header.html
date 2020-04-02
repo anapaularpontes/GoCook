@@ -6,8 +6,6 @@
 		integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" 
 		integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-	<!-- include css in the header -->
-    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/3.3.7/css/bootstrap.min.css}"/>
 	<!-- Custom Css -->
 	<link rel="stylesheet" href="/css/index.css">
 	<title>GoCook</title>
@@ -60,7 +58,7 @@
 	<div class="header-bottom d-none d-lg-block">
 		<div class="container">
 			<div class="site-logo-desktop">
-				<a href="index.html"><img src="../static/img/gocook-logo.png" th:src="@{img/gocook-logo.png}" class="rounded mx-auto d-block" alt="Site Logo"></a>
+				<a href="index.html"><img th:src="@{/img/gocook-logo.png}" class="rounded mx-auto d-block" alt="Site Logo"></a>
 			</div>
 		</div>
 	</div>

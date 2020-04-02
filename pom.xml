@@ -48,19 +48,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		
-		<!-- webjar bootstrap and jquery dependencies -->
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>bootstrap</artifactId>
-            <version>3.3.7</version>
-        </dependency>
-        <dependency>
-            <groupId>org.webjars</groupId>
-            <artifactId>jquery</artifactId>
-            <version>3.2.1</version>
-        </dependency>
-        
 	</dependencies>
 
 	<build>
