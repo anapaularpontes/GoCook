@@ -3,7 +3,7 @@
 body {
 	min-height: 100vh;
 	position: relative;
-	padding: 60px;
+	padding: 60px 150px 15px 150px;
 }
 
 /*Edit btn*/
@@ -33,6 +33,11 @@ button:disabled, button[disabled], button:disabled:hover{
 
 header{
 	width: 100%;
+	padding: 0px 0px 20px 0px;
+}
+
+img {
+	display: inline-block;
 }
 
 header img{
@@ -328,17 +333,31 @@ footer {
 
 .single-recipe-layout1 .item-title {
 	font-weight: 700;
+	text-align: center;
+}
+
+.single-recipe-layout1 img{
+	display: block;
+  	margin-left: auto;
+  	margin-right: auto;
+  	border: 1px solid #ddd;
+  	border-radius: 4px;
+  	padding: 2px;
 }
 
 .single-recipe-layout1 .item-feature {
-	margin-bottom: 35px;
+	margin-bottom: 20px;
+	
 }
 
 .single-recipe-layout1 .item-feature ul {
-	margin-left: -1px;
-	margin-right: -1px;
+	padding-inline-start: 0px;
+  	margin-left: auto;
+  	margin-right: auto;
 	display: flex;
 	flex-wrap: wrap;
+	width: 320px;
+	text-align: center;
 }
 
 .single-recipe-layout1 .item-feature ul li {
@@ -352,7 +371,6 @@ footer {
 .single-recipe-layout1 .item-feature ul li .feature-wrap {
 	background-color: #f2f2f2;
 	display: flex;
-	justify-content: center;
 }
 
 .single-recipe-layout1 .item-feature ul li .feature-title {
@@ -361,13 +379,10 @@ footer {
 	font-weight: 600;
 }
 
-.single-recipe-layout1 .direction-wrap-layout1 .direction-box-layout1 {
-	margin-bottom: 40px;
-	display: flex;
-	padding: 0 5rem 0 3rem;
-	align-items: center;
-	margin-left: 30px;
-	flex: 1;
+.single-recipe-layout1 .ingridients-wrap, .single-recipe-layout1 .direction-wrap-layout1 {
+	background-color: #f8f8f8;
+	padding: 10px 0px 10px 30px;
+	margin-bottom: 20px;
 }
 
 .serial-number {

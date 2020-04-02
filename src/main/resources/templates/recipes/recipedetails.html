@@ -8,8 +8,9 @@
 
 	<div class="single-recipe-layout1">
 		<h1 class="item-title" th:text="${recipe.getTitle()}"></h1>
+		<div style="line-height:1;">&nbsp;</div>
 		<div class="item-figure">
-			<img src="${recipe.getImage()}" alt="RecipeImg">
+			<img th:src="${recipe.getImage()}" alt="RecipeImg" width="320" height="320">
 		</div>
 		<div class="item-feature">
 			<ul style="list-style-type:none">
@@ -42,18 +43,20 @@
 		</div>
 		<div class="ingridients-wrap">
 			<h3 class="item-title">Ingredients</h3>
+			<div style="line-height:1;">&nbsp;</div>
 			<ul>
 				<li class="media" th:each="qty_ingredients : ${recipe.getQty_ingredients()}">
 					<div>&#8226;&nbsp;</div>
-					<div th:text="${qty_ingredients.getKey().getQuantity()} "></div>
+					<div th:text="${qty_ingredients.getValue().getQuantity()} "></div>
 					<div class = "media-body">
-						<p class="mt-0 mb-1" th:text="${qty_ingredients.getValue().getName()}"></p>
+						<p class="mt-0 mb-1" th:text="${qty_ingredients.getKey().getName()}"></p>
 					</div>
 				</li>
 			</ul>
 		</div>
 		<div class="direction-wrap-layout1">
 			<h3 class="item-title">Directions</h3>
+			<div style="line-height:1;">&nbsp;</div>
 			<ul class="list-unstyled">
 				<div th:each="instruction : ${recipe.getInstructions()}">
 					<li class="media">

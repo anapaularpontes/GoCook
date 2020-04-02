@@ -1,6 +1,9 @@
 package com.GoCook.Entities;
 
-import java.util.HashMap;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -15,9 +18,10 @@ import javax.persistence.Lob;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.MapKeyJoinColumn;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import org.apache.tomcat.util.codec.binary.Base64;
 
 @Entity
 @Table(name="recipe")
@@ -39,20 +43,22 @@ public class Recipe {
 	@ManyToMany
 	@JoinTable(name="category_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="category_id"))
 	private List<Category> categories;
-	@OneToMany
+	@ManyToMany
 	@JoinTable(name="ingredient_recipe", joinColumns = @JoinColumn(name="recipe_id"), inverseJoinColumns = @JoinColumn(name="ingredient_id"))
 	@MapKeyJoinColumn(name = "quantity_id")
-	private Map<Quantity, Ingredient> qty_ingredients = new HashMap<>();
+	//private ArrayList<Quantity, Ingredient> qty_ingredients;
+	private Map<Ingredient,Quantity> qty_ingredients;
 	@OneToOne
 	private User user;
+	private boolean active = true;
 	
 	public Recipe() {	}
 
 	public Recipe(String title, String image, List<String> instructions, String prepTime, String cookTime, String servingQty, List<Category> categories,
-			Map<Quantity, Ingredient> qty_ingredients, User user) {
+			Map<Ingredient,Quantity> qty_ingredients, User user) {
 		super();
 		this.title = title;
-		this.image = image;
+		this.image = setImage(image);
 		this.instructions = instructions;
 		this.prepTime = prepTime;
 		this.cookTime = cookTime;
@@ -60,6 +66,7 @@ public class Recipe {
 		this.categories = categories;
 		this.qty_ingredients = qty_ingredients;
 		this.user = user;
+		this.active = true;
 	}
 
 	public int getId() {
@@ -82,8 +89,28 @@ public class Recipe {
 		return image;
 	}
 
-	public void setImage(String image) {
-		this.image = image;
+	public String setImage(String image) {
+		
+		String encodedfile = null;
+		if(image.contains("data:image/jpeg;base64")) {
+			encodedfile = image;
+		} else {
+			File file =  new File(image);
+	        try {
+	            FileInputStream fileInputStreamReader = new FileInputStream(file);
+	            byte[] bytes = new byte[(int)file.length()];
+	            fileInputStreamReader.read(bytes);
+	            encodedfile =  new String(Base64.encodeBase64(bytes), "UTF-8");
+	            fileInputStreamReader.close();
+	        } catch (FileNotFoundException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        } catch (IOException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+		}
+        return encodedfile;
 	}
 
 	public List<String> getInstructions() {
@@ -126,11 +153,11 @@ public class Recipe {
 		this.categories = categories;
 	}
 
-	public Map<Quantity, Ingredient> getQty_ingredients() {
+	public Map<Ingredient,Quantity> getQty_ingredients() {
 		return qty_ingredients;
 	}
 
-	public void setQty_ingredients(Map<Quantity, Ingredient> qty_ingredients) {
+	public void setQty_ingredients(Map<Ingredient,Quantity> qty_ingredients) {
 		this.qty_ingredients = qty_ingredients;
 	}
 
@@ -140,6 +167,14 @@ public class Recipe {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+	
+	public boolean isActive() {
+		return active;
+	}
+
+	public void setActive(boolean active) {
+		this.active = active;
 	}
 
 	@Override
