@@ -41,7 +41,8 @@ public class UserController {
 	
 	/**
 	 * Makes categories list available in the view
-	 * @return List of categories
+	 * @return List of users
+	 * 
 	 */
 	
 	@ModelAttribute("users")
@@ -114,6 +115,10 @@ public class UserController {
 }
 
 		
+
+
+
+
 
 
 
