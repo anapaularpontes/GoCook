@@ -14,6 +14,6 @@ import com.GoCook.Entities.Recipe;
 @Component
 public interface RecipeDAO extends CrudRepository<Recipe, Integer> {
 
-	@Query("SELECT r FROM Recipe r ORDER BY r.title ASC")
+	@Query("SELECT r FROM Recipe r WHERE r.active = true ORDER BY r.title ASC")
 	Iterable<Recipe> getAllRecipes();
 }
