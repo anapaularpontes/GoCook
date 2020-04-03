@@ -16,4 +16,7 @@ public interface RecipeDAO extends CrudRepository<Recipe, Integer> {
 
 	@Query("SELECT r FROM Recipe r WHERE r.active = true ORDER BY r.title ASC")
 	Iterable<Recipe> getAllRecipes();
+	
+	@Query(value="SELECT * FROM Recipe ORDER BY rand() LIMIT 9", nativeQuery = true)
+	Iterable<Recipe> getRandomRecipes();
 }

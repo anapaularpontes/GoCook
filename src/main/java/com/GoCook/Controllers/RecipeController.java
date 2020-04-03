@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.RecipeDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -26,16 +28,19 @@ public class RecipeController {
 	@Autowired
 	RecipeDAO rDAO;
 	
+	@Autowired
+	CategoryDAO cDAO;
+	
 	/**
 	 * Maps the /recipes (list of all recipes)
 	 * @param model Sends the recipe object to the view to fill the html form
 	 * @return the view of Recipes (list)
 	 */
 	
-	@GetMapping("/recipes")
+	@GetMapping("/recipesadmin")
 	public String ShowAll(Model model) {
 		model.addAttribute("recipe", new Recipe());
-		return "recipes/recipes";
+		return "recipes/recipesadmin";
 	}
 	
 	/**

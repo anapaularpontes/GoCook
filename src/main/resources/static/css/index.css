@@ -33,7 +33,7 @@ button:disabled, button[disabled], button:disabled:hover{
 
 header{
 	width: 100%;
-	padding: 0px 0px 20px 0px;
+	padding: 0px 0px 40px 0px;
 }
 
 img {
@@ -397,4 +397,65 @@ footer {
 
 .media-body {
 	padding: 0px 0px 0px 5px;
+}
+
+/* Show recipes*/
+
+.product-box-layout1 {
+	background-color: #ffffff;
+	margin-bottom: 3rem;
+}
+
+.product-box-layout1 .item-figure {
+	margin-bottom: 0;
+	overflow: hidden;
+}
+
+.product-box-layout1 .item-figure a {
+	display: block;
+	
+}
+
+.product-box-layout1 .item-figure img {
+	display: block;
+	margin-left: auto;
+  	margin-right: auto;
+}
+
+.product-box-layout1 .item-content {
+	text-align: center;
+	padding: 25px 0px 15px 0px;
+}
+
+.product-box-layout1 .item-content .item-title {
+	font-weight: 700;
+	overflow: hidden;
+	-o-text-overflow: ellipsis;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+.product-box-layout1 .item-content .item-title a {
+	color: #111111;
+	-webkit-transition: all 0.3s ease-in-out;
+	-moz-transition: all 0.3s ease-in-out;
+	-ms-transition: all 0.3s ease-in-out;
+	-o-transition: all 0.3s ease-in-out;
+	transition: all 0.3s ease-in-out;
+}
+
+.product-box-layout1 .item-content .item-title:hover a {
+	color: #ff4a52;
+}
+
+.product-box-layout1:hover .item-figure {
+	margin-bottom: 0;
+}
+
+.product-box-layout1:hover .item-figure img {
+	-webkit-transform: rotate(5deg) scale(1.15);
+	-ms-transform: rotate(5deg) scale(1.15);
+	transform: rotate(5deg) scale(1.15);
 }
