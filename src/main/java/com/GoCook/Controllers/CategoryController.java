@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.CategoryDAO;
+import com.GoCook.Boundaries.RecipeDAO;
 import com.GoCook.Entities.Category;
+import com.GoCook.Entities.Recipe;
 
 
 /**
@@ -25,6 +27,9 @@ public class CategoryController {
 	
 	@Autowired
 	CategoryDAO cDAO;
+	
+	@Autowired
+	RecipeDAO rDAO;
 	
 	/**
 	 * Maps the /categories (list of all categories)
@@ -82,6 +87,21 @@ public class CategoryController {
 		category_db.setActive(false);
 		cDAO.save(category_db);
 		return "redirect:/categories";
+	}
+	
+	/**
+	 * 
+	 * @param id The id of the category
+	 * @param model	The model to be sent to the view
+	 * @return the view for the recipes of a category
+	 */
+	@GetMapping("/category/{id}/search")
+	public String getRecipeByCategory(@PathVariable String id, Model model) {
+		Category c = cDAO.findById(Integer.parseInt(id)).get();
+		model.addAttribute("category", c);
+		model.addAttribute("recipes", rDAO.findByCategory(Integer.parseInt(id)));
+		model.addAttribute("recipe", new Recipe());
+		return "recipes/searchresult";
 	}
 
 	/**

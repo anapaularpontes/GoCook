@@ -8,16 +8,26 @@
 
 	<div class="container">
 		<div class="row">
+			<h1><small>Search:</small>&nbsp;</h1>
+			<i><h1 th:text="${category.getName()}"></h1></i>
+		</div>
+	</div>
+	<div style="line-height: 2;">&nbsp;</div>
+	<div class="container">
+		<div class="row">
 			<div class="col-lg-4 col-md-6 col-sm-12" th:each="recipe: ${recipes}">
 				<div class="product-box-layout1">
 					<figure class="item-figure">
-						<a class="nav-link" th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}"><img
+						<a class="nav-link"
+							th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}"><img
 							th:src="${recipe.getImage()}" alt="RecipeImg" width="250"
 							height="250"></a>
 					</figure>
 					<div class="item-content">
 						<h5 class="item-title">
-							<a class="nav-link" th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}" th:text="${recipe.getTitle()}"></a>
+							<a class="nav-link"
+								th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}"
+								th:text="${recipe.getTitle()}"></a>
 						</h5>
 					</div>
 				</div>
