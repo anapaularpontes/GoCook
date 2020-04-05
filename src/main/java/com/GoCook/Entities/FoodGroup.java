@@ -14,13 +14,15 @@ public class FoodGroup {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="foodGroup_id")
 	private int id = 0;
-	private String foodGroup = "";
+	
+	@Column(name="foodGroup")
+	private String name = "";
 	private boolean active = true;
 	
 	public FoodGroup() {	}
 	
-	public FoodGroup(String foodGroup) {
-		this.foodGroup = foodGroup;
+	public FoodGroup(String name) {
+		this.name = name;
 		this.active = true;
 	}
 
@@ -32,12 +34,12 @@ public class FoodGroup {
 		this.id = id;
 	}
 
-	public String getFoodGroup() {
-		return foodGroup;
+	public String getName() {
+		return name;
 	}
 
-	public void setFoodGroup(String foodGroup) {
-		this.foodGroup = foodGroup;
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public boolean isActive() {
@@ -50,7 +52,7 @@ public class FoodGroup {
 
 	@Override
 	public String toString() {
-		return foodGroup;
+		return "foodGroup[id=" + id + ", name=" + name + "]";
 	}
 	
 }

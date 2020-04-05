@@ -19,14 +19,8 @@ public class IndexController {
 	@Autowired
 	RecipeDAO rDAO;
 	
-	@Autowired
-	PopulateDatabase populateDatabase;
-	
 	@GetMapping("/")
 	public String home(Model model) {
-		if(!fgDAO.findById(1).isPresent()) {
-			populateDatabase.start();
-		}
 		
 		model.addAttribute("recipes", rDAO.getRandomRecipes());
 		model.addAttribute("recipe", new Recipe());

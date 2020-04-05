@@ -11,7 +11,7 @@ $('#modalForm').on('show.bs.modal', function (event) {
 	if(foodgroup!=0) {
 		$.ajax({
 			dataType: "json",
-			url: "/foodgroup/"+foodgroup
+			url: "/foodgroups/"+foodgroup
 		}).done(function(data) {
 			document.getElementById("txtId").value = data.id;
 			document.getElementById("txtFoodGroup").value = data.name;
