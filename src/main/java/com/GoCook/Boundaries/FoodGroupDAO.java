@@ -16,6 +16,6 @@ import com.GoCook.Entities.FoodGroup;
 @Component
 public interface FoodGroupDAO extends CrudRepository<FoodGroup, Integer> {
 	
-	@Query("SELECT fg FROM FoodGroup fg WHERE fg.active = true ORDER BY fg.foodGroup ASC")
+	@Query("SELECT fg FROM FoodGroup fg WHERE fg.active = true ORDER BY fg.name ASC")
 	Iterable<FoodGroup> getAllFoodGroups();
 }

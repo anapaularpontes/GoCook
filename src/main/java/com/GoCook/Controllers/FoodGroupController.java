@@ -34,8 +34,8 @@ public class FoodGroupController {
 	}
 	
 	/**
-	 * Makes food group list available in the view
-	 * @return List of food groups
+	 * Makes foodgroup list available in the view
+	 * @return List of foodgroups
 	 */
 	@ModelAttribute("foodgroups")
 	public Iterable<FoodGroup> getAll() {
@@ -48,9 +48,9 @@ public class FoodGroupController {
 	 * @return The view/foodGroups
 	 */
 	@PutMapping("/foodgroups")
-	public String updateFoodGroups(@ModelAttribute FoodGroup foodgroups) {
-		FoodGroup foodGroup_db = fgDAO.findById(foodgroups.getId()).get();
-		foodGroup_db.setFoodGroup(foodgroups.getFoodGroup());
+	public String updateFoodGroups(@ModelAttribute FoodGroup fg) {
+		FoodGroup foodGroup_db = fgDAO.findById(fg.getId()).get();
+		foodGroup_db.setName(fg.getName());
 		fgDAO.save(foodGroup_db);
 		return "redirect:/foodgroups";
 	}
@@ -70,7 +70,7 @@ public class FoodGroupController {
 
 	/**
 	 * Delete (hide) category
-	 * @param foodGroups The category entity
+	 * @param foodGroups The foodgroup entity
 	 * @return The view /foodGroups
 	 */
 	@DeleteMapping("/foodgroups")
@@ -83,8 +83,8 @@ public class FoodGroupController {
 
 	/**
 	 * Return a foodGroups object from an id
-	 * @param id The id of the category
-	 * @return the JSON object of a category
+	 * @param id The id of the foodgroup
+	 * @return the JSON object of a foodgroup
 	 */
 	@GetMapping("/foodgroups/{id}")
 	@ResponseBody
