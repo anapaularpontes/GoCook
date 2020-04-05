@@ -11,9 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.RecipeDAO;
-import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -27,9 +25,6 @@ public class RecipeController {
 	
 	@Autowired
 	RecipeDAO rDAO;
-	
-	@Autowired
-	CategoryDAO cDAO;
 	
 	/**
 	 * Maps the /recipes (list of all recipes)
@@ -109,6 +104,7 @@ public class RecipeController {
 		model.addAttribute("recipe", rDAO.findById(Integer.parseInt(id)).get());
 		return "recipes/recipedetails";
 	}
+	
 	
 	/**
 	 * Return a recipe object from an id

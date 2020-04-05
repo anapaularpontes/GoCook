@@ -2,6 +2,7 @@ package com.GoCook.Boundaries;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
 import com.GoCook.Entities.Recipe;
@@ -19,4 +20,8 @@ public interface RecipeDAO extends CrudRepository<Recipe, Integer> {
 	
 	@Query(value="SELECT * FROM Recipe ORDER BY rand() LIMIT 9", nativeQuery = true)
 	Iterable<Recipe> getRandomRecipes();
+	
+	@Query("SELECT r FROM Recipe r JOIN r.categories c WHERE " +
+			"c.id = :catId ORDER BY r.title ASC")
+	Iterable<Recipe> findByCategory(@Param("catId") int catId);
 }
