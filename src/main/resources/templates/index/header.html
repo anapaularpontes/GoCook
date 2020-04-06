@@ -18,15 +18,9 @@
 						<li><a class="navlink" href="/">Home</a></li>
 						<li><a href="#">Category</a>
 							<ul class="dropdown-menu-col-1" style="list-style-type:none">
-								<li><a class="navlink" href="/category/1/search">Breakfast</a></li>
-								<li><a class="navlink" href="/category/2/search">Lunch</a></li>
-								<li><a class="navlink" href="/category/3/search">Dinner</a></li>
-								<li><a class="navlink" href="/category/4/search">Dessert</a></li>
-								<li><a class="navlink" href="/category/5/search">Healthy</a></li>
-								<li><a class="navlink" href="/category/6/search">Meat</a></li>
-								<li><a class="navlink" href="/category/7/search">Poultry</a></li>
-								<li><a class="navlink" href="/category/8/search">Veggie</a></li>
-								<li><a class="navlink" href="/category/9/search">Seafood</a></li>
+								<li th:each="category: ${categories}">
+									<a class="navlink" th:href="@{'/category/'+${category.getId()}+'/search'}" th:text="${category.getName()}"></a>
+								</li>
 							</ul>
 						</li>
 						<li><a href="category.html">Search by Ingredient</a></li>
@@ -48,7 +42,9 @@
 							<button type="button" class="login-btn" data-toggle="modal"
 								data-target="#myModal">Login </button>
 						</li>
-						<li><a class="navlink" href="/submit-recipe" class="fill-btn">SUBMIT RECIPE</a></li>
+						<div class="fill-btn">
+							<li><a class="navlink" href="/submit-recipe" >SUBMIT RECIPE</a></li>
+						</div>
 					</ul>
 				</div>
 
