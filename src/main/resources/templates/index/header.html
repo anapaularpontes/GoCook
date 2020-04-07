@@ -18,24 +18,19 @@
 						<li><a class="navlink" href="/">Home</a></li>
 						<li><a href="#">Category</a>
 							<ul class="dropdown-menu-col-1" style="list-style-type:none">
-								<li><a class="navlink" href="/category/1/search">Breakfast</a></li>
-								<li><a class="navlink" href="/category/2/search">Lunch</a></li>
-								<li><a class="navlink" href="/category/3/search">Dinner</a></li>
-								<li><a class="navlink" href="/category/4/search">Dessert</a></li>
-								<li><a class="navlink" href="/category/5/search">Healthy</a></li>
-								<li><a class="navlink" href="/category/6/search">Meat</a></li>
-								<li><a class="navlink" href="/category/7/search">Poultry</a></li>
-								<li><a class="navlink" href="/category/8/search">Veggie</a></li>
-								<li><a class="navlink" href="/category/9/search">Seafood</a></li>
+								<li th:each="category: ${categories}">
+									<a class="navlink" th:href="@{'/category/'+${category.getId()}+'/search'}" th:text="${category.getName()}"></a>
+								</li>
 							</ul>
 						</li>
 						<li><a href="category.html">Search by Ingredient</a></li>
 						<li><a href="#">Database</a>
 							<ul class="dropdown-menu-col-1" style="list-style-type:none">
 								<li><a class="nav-link" href="/categories">Categories</a></li>
+								<li><a class="nav-link" href="/foodgroups">Food Group</a></li>
 								<li><a class="nav-link" href="/ingredients">Ingredients</a></li>
 								<li><a class="nav-link" href="/quantities">Quantities</a></li>
-								<li><a class="nav-link" href="/foodgroups">Food Group</a></li>
+								<li><a class="nav-link" href="/recipes">Recipes</a></li>
 								<li><a class="nav-link" href="/users">Users</a></li>
 							</ul>
 						</li>
@@ -48,7 +43,9 @@
 							<button type="button" class="login-btn" data-toggle="modal"
 								data-target="#myModal">Login </button>
 						</li>
-						<li><a href="submit-recipe.html" class="fill-btn">SUBMIT RECIPE</a></li>
+						<div class="navlink" href="/submit-recipe">
+							<li><a class="fill-btn" href="/submit-recipe">SUBMIT RECIPE</a></li>
+						</div>
 					</ul>
 				</div>
 
@@ -58,7 +55,7 @@
 	<div class="header-bottom d-none d-lg-block">
 		<div class="container">
 			<div class="site-logo-desktop">
-				<a href="index.html"><img th:src="@{/img/gocook-logo.png}" class="rounded mx-auto d-block" alt="Site Logo"></a>
+				<a class="navlink" href="/"><img th:src="@{/img/gocook-logo.png}" class="rounded mx-auto d-block" alt="Site Logo"></a>
 			</div>
 		</div>
 	</div>
