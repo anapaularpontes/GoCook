@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+</head>
+<body>
+	<header th:replace="index/header.html"></header>
+		
+		<h1>Recipes</h1>
+		<table class="table">
+			<tr>
+				<th>Title</th>
+				<th>Action</th>
+			<tr>
+			<tr th:each="recipe : ${recipes}">
+				<td th:text="${recipe.getTitle()}"></td>
+				<td style="white-space: nowrap;">
+					<form action="/recipes" th:method="DELETE" style="display: inline;">
+						<input type="submit" class="btn-sm btn-warning" value="Delete">
+						<input type="hidden" th:value="${recipe.getId()}" id="deleteId" name="id">						
+					</form>
+				</td>
+			</tr>
+		</table>
+				 
+	<footer th:insert="index/footer.html"></footer>
+</body>
+</html>
