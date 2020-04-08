@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.RecipeDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -26,16 +28,19 @@ public class RecipeController {
 	@Autowired
 	RecipeDAO rDAO;
 	
+	@Autowired
+	CategoryDAO cDAO;
+	
 	/**
 	 * Maps the /recipes (list of all recipes)
 	 * @param model Sends the recipe object to the view to fill the html form
 	 * @return the view of Recipes (list)
 	 */
 	
-	@GetMapping("/recipesadmin")
+	@GetMapping("/recipes")
 	public String ShowAll(Model model) {
 		model.addAttribute("recipe", new Recipe());
-		return "recipes/recipesadmin";
+		return "recipes/recipes";
 	}
 	
 	/**
@@ -48,11 +53,36 @@ public class RecipeController {
 	}
 	
 	/**
+	 * Make available the view to submit a new recipe
+	 * @param model 
+	 * @return The view for submit a recipe
+	 */
+	@GetMapping("/submit-recipe")
+	public String SubmitRecipe(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		return "recipes/submit-recipe";
+	}
+	
+	/**
+	 * Make available the view to edit an existing recipe
+	 * @param model 
+	 * @return The view for edit a recipe
+	 */
+	@GetMapping("/recipe/{id}/edit")
+	public String SubmitRecipe(@PathVariable String id, Model model) {
+		model.addAttribute("recipe", rDAO.findById(Integer.parseInt(id)).get());
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		return "recipes/submit-recipe";
+	}
+	
+	/**
 	 * Creates a new Recipe
 	 * @param recipe The new recipe
 	 * @return The view /recipe
 	 */
-	@PostMapping("/recipes")
+	@PostMapping("/submit-recipe")
 	public String createRecipe(@ModelAttribute Recipe recipe) {
 		rDAO.save(recipe);
 		return "redirect:/recipes";
