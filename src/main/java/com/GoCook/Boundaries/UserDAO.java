@@ -17,4 +17,10 @@ public interface UserDAO extends CrudRepository<User, Integer> {
 	@Query("SELECT u FROM User u WHERE u.active = true ORDER BY u.firstName ASC")
 	Iterable<User> getUsers();
 
+	//static User findByEmail(String emailAddress) {
+		// TODO Auto-generated method stub
+		//return null;
+	//}
+	public Iterable<User> findByEmailAddress(String email);
+
 }

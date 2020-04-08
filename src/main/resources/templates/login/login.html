@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+<head>
+	
+</head>
+<body>
+	<header th:replace="index/header.html"></header>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-4 col-md-6 col-sm-12" th:each="recipe: ${recipes}">
+				<div class="product-box-layout1">
+					<figure class="item-figure">
+						<a class="nav-link" th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}"><img
+							th:src="${recipe.getImage()}" alt="RecipeImg" width="250"
+							height="250"></a>
+					</figure>
+					<div class="item-content">
+						<h5 class="item-title">
+							<a class="nav-link" th:href="@{'/recipe/'+${recipe.getId()}+'/detail'}" th:text="${recipe.getTitle()}"></a>
+						</h5>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<form action="#" th:action="@{/login}" th:object="${user}" method="POST" id="userForm">
+				  <div class="form-group">
+				  	<input type="hidden" th:field="*{Id}" id="txtId">
+				    <label for="txtusername">UserName</label>
+				    <input type="text" class="form-control" id="txtusername" th:field="*{EmailAddress}">
+				    
+				    <label for="txtpassword">Password</label>
+				    <input type="password" class="form-control" id="txtpassword" th:field="*{Password}">
+				  </div>
+				  	<button type="submit" class="btn btn-primary">Login</button>		        	
+			</form>
+		</div>
+	</div>
+
+
+	<footer th:insert="index/footer.html"></footer>
+</body>
+</html>
