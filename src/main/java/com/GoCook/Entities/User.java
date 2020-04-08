@@ -72,6 +72,10 @@ public class User {
 	public void setPassword(String password) {
 		this.password = hashPassword(password);
 	}
+	
+	public String getPassword() {
+		return this.password;
+	}
 
 	public String getRole() {
 		return role;
