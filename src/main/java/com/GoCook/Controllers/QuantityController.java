@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.QuantityDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.Quantity;
 
 /**
@@ -23,7 +25,10 @@ import com.GoCook.Entities.Quantity;
 public class QuantityController {
 	
 	@Autowired
-	QuantityDAO cDAO;
+	QuantityDAO qDAO;
+	
+	@Autowired
+	CategoryDAO cDAO;
 	
 	/**
 	 * Maps the /quantities (list of all quantities)
@@ -33,6 +38,9 @@ public class QuantityController {
 	
 	@GetMapping("/quantities")
 	public String ShowAll(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("quantity", new Quantity());
 		return "quantities/quantities";
 	}
@@ -43,7 +51,7 @@ public class QuantityController {
 	 */
 	@ModelAttribute("quantities")
 	public Iterable<Quantity> getAll() {
-		return cDAO.getQuantities();
+		return qDAO.getQuantities();
 	}
 	
 	/**
@@ -53,7 +61,7 @@ public class QuantityController {
 	 */
 	@PostMapping("/quantities")
 	public String createQuantity(@ModelAttribute Quantity quantity) {
-		cDAO.save(quantity);
+		qDAO.save(quantity);
 		return "redirect:/quantities";
 	}
 	
@@ -64,9 +72,9 @@ public class QuantityController {
 	 */
 	@PutMapping("/quantities")
 	public String updateQuantity(@ModelAttribute Quantity quantity) {
-		Quantity quantity_db = cDAO.findById(quantity.getId()).get();
+		Quantity quantity_db = qDAO.findById(quantity.getId()).get();
 		quantity_db.setQuantity(quantity.getQuantity());
-		cDAO.save(quantity_db);
+		qDAO.save(quantity_db);
 		return "redirect:/quantities";
 	}
 
@@ -77,9 +85,9 @@ public class QuantityController {
 	 */
 	@DeleteMapping("/quantities")
 	public String deleteQuantity(@ModelAttribute Quantity quantity) {
-		Quantity quantity_db = cDAO.findById(quantity.getId()).get();
+		Quantity quantity_db = qDAO.findById(quantity.getId()).get();
 		quantity_db.setActive(false);
-		cDAO.save(quantity_db);
+		qDAO.save(quantity_db);
 		return "redirect:/quantities";
 	}
 
@@ -92,7 +100,7 @@ public class QuantityController {
 	@ResponseBody
 	public Quantity seekPath(@PathVariable String id) {
 		try {
-			return cDAO.findById(Integer.parseInt(id)).get();
+			return qDAO.findById(Integer.parseInt(id)).get();
 		} catch(Exception ex) {
 			return new Quantity();
 		}

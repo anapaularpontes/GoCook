@@ -46,6 +46,9 @@ public class RecipeController {
 	
 	@GetMapping("/recipes")
 	public String ShowAll(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("recipe", new Recipe());
 		return "recipes/recipes";
 	}
@@ -102,6 +105,9 @@ public class RecipeController {
 	 */
 	@GetMapping("/recipe/{id}/detail")
 	public String getRecipe(@PathVariable String id, Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("recipe", rDAO.findById(Integer.parseInt(id)).get());
 		return "recipes/recipedetails";
 	}
@@ -142,12 +148,13 @@ public class RecipeController {
 			if(!recipesFiltered.contains(recipe))
 				recipesFiltered.add(recipe);
 		}
-
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("searchword", query);
 		model.addAttribute("recipes", recipesFiltered);
 		model.addAttribute("recipe", new Recipe());
 		return "recipes/searchresult";
-		
 	}
 
 }

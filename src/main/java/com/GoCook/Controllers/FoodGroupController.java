@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.FoodGroupDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.FoodGroup;	
 	
 @Controller
@@ -20,7 +22,8 @@ public class FoodGroupController {
 	@Autowired
 	FoodGroupDAO fgDAO;
 	
-	
+	@Autowired
+	CategoryDAO cDAO;
 	
 	/**
 	 * Maps the /ingredients (list of all food Groups)
@@ -29,6 +32,9 @@ public class FoodGroupController {
 	 */
 	@GetMapping("/foodgroups")
 	public String showAll(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("foodgroup", new FoodGroup());
 		return "foodgroups/foodgroups";
 	}

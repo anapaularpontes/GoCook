@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.FoodGroupDAO;
 import com.GoCook.Boundaries.IngredientDAO;
 import com.GoCook.Boundaries.RecipeDAO;
@@ -36,7 +37,7 @@ public class IngredientController {
 	FoodGroupDAO fgDAO;
 	
 	@Autowired
-	RecipeDAO rDAO;
+	CategoryDAO cDAO;
 	
 	/**
 	 * Maps the /ingredients (list of all ingredients)
@@ -45,6 +46,9 @@ public class IngredientController {
 	 */
 	@GetMapping("/ingredients")
 	public String ShowAll(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
+		
 		model.addAttribute("ingredient", new Ingredient());
 		return "ingredients/ingredients";
 	}

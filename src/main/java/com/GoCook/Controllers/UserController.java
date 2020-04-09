@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.GoCook.Boundaries.CategoryDAO;
 import com.GoCook.Boundaries.UserDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.User;
 
 		
@@ -27,6 +29,9 @@ public class UserController {
 	@Autowired
 	UserDAO uDAO;
 	
+	@Autowired
+	CategoryDAO cDAO;
+	
 		
 	/**
 	 * Maps the /Users (list of all Users)
@@ -35,6 +40,8 @@ public class UserController {
 	 */
 	@GetMapping("/users")
 	public String ShowAll(Model model) {
+		model.addAttribute("categories", cDAO.getCategories());
+		model.addAttribute("category", new Category());
 		model.addAttribute("user", new User());
 		return "users/users";
 	}
