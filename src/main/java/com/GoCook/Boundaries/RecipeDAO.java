@@ -5,6 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Component;
 
+import com.GoCook.Entities.Ingredient;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -25,12 +26,15 @@ public interface RecipeDAO extends CrudRepository<Recipe, Integer> {
 			"c.id = :catId ORDER BY r.title ASC")
 	Iterable<Recipe> findByCategory(@Param("catId") int catId);
 	
-	@Query("SELECT r FROM Recipe r"
+	/*@Query("SELECT r FROM Recipe r"
 			+ " JOIN r.qty_ingredients qi"
 			+ " JOIN qi.ingredient i"
 			+ " WHERE i.name LIKE %:ingrSearch%"
 			+ " ORDER BY r.title ASC")
-	Iterable<Recipe> findByIngredient(@Param("ingrSearch") String ingrSearch);
+	Iterable<Recipe> findByIngredient(@Param("ingrSearch") String ingrSearch);*/
+	
+	@Query("Select r from Recipe r JOIN r.qty_ingredients i WHERE :ingrSearch in (KEY(i)) ")
+	Iterable<Recipe> findByIngredient(@Param("ingrSearch") Ingredient ingrSearch);
 	
 	
 	/*@Query(value="SELECT * FROM Recipe r"

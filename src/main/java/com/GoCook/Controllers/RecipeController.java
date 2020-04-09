@@ -1,5 +1,9 @@
 package com.GoCook.Controllers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.CategoryDAO;
+import com.GoCook.Boundaries.IngredientDAO;
 import com.GoCook.Boundaries.RecipeDAO;
 import com.GoCook.Entities.Category;
+import com.GoCook.Entities.Ingredient;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -149,6 +156,27 @@ public class RecipeController {
 		} catch(Exception ex) {
 			return new Recipe();
 		}
+	}
+	
+	@Autowired
+	IngredientDAO iDao;
+	
+	@GetMapping("/recipe/search")
+	public String getRecipeCor(@RequestParam (value="query") String query, Model model) {
+		Iterable<Ingredient> ingredients = iDao.findByNameContains(query);
+		List<Recipe> recipesList = new ArrayList<>();
+		
+		for(Ingredient ingredient : ingredients) {
+			System.out.println("Ingredient => " + ingredient);
+			Iterable<Recipe> recipes = rDAO.findByIngredient(ingredient);
+			recipes.iterator().forEachRemaining(recipesList::add);
+		}
+
+		model.addAttribute("searchword", query);
+		model.addAttribute("recipes", recipesList);
+		model.addAttribute("recipe", new Recipe());
+		return "recipes/searchresult";
+		
 	}
 
 }

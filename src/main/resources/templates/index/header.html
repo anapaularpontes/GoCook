@@ -60,8 +60,8 @@
 	<div class="container">
 		<div class="header-search-box">
 			<form class="search-form" th:object="${ingredient}"
-				th:action="@{/ingredient/search}" method="get">
-				<input type="text" name="search" id="search" th:value="${search}"
+				th:action="@{/recipe/search}" method="get">
+				<input type="text" name="query" id="query" th:value="${query}"
 					placeholder="Search by ingredient..." />
 				<button type="submit" value="Search" class="fill-btn">Search</button>
 			</form>

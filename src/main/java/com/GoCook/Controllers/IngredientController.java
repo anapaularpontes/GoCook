@@ -102,13 +102,13 @@ public class IngredientController {
 	 * @param model The model to be sent to the view
 	 * @return the view for the recipes of a ingredient
 	 */
-	@GetMapping("/ingredient/search")
-	public String getRecipeByIngredient(@RequestParam (value="search") String ingredient, Model model) {
-		model.addAttribute("searchword", ingredient);
-		model.addAttribute("recipes", rDAO.findByIngredient(ingredient));
-		model.addAttribute("recipe", new Recipe());
-		return "recipes/searchresult";
-	}
+//	@GetMapping("/ingredient/search")
+//	public String getRecipeByIngredient(@RequestParam (value="search") String ingredient, Model model) {
+//		model.addAttribute("searchword", ingredient);
+//		model.addAttribute("recipes", rDAO.findByIngredient(ingredient));
+//		model.addAttribute("recipe", new Recipe());
+//		return "recipes/searchresult";
+//	}
 
 	/**
 	 * Return a ingredient object from an id
