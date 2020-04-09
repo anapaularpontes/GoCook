@@ -1,5 +1,9 @@
 package com.GoCook.Controllers;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -9,11 +13,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.CategoryDAO;
+import com.GoCook.Boundaries.IngredientDAO;
 import com.GoCook.Boundaries.RecipeDAO;
 import com.GoCook.Entities.Category;
+import com.GoCook.Entities.Ingredient;
 import com.GoCook.Entities.Recipe;
 
 /**
@@ -50,42 +57,6 @@ public class RecipeController {
 	@ModelAttribute("recipes")
 	public Iterable<Recipe> getAll() {
 		return rDAO.getAllRecipes();
-	}
-	
-	/**
-	 * Make available the view to submit a new recipe
-	 * @param model 
-	 * @return The view for submit a recipe
-	 */
-	@GetMapping("/submit-recipe")
-	public String SubmitRecipe(Model model) {
-		model.addAttribute("categories", cDAO.getCategories());
-		model.addAttribute("category", new Category());
-		return "recipes/submit-recipe";
-	}
-	
-	/**
-	 * Make available the view to edit an existing recipe
-	 * @param model 
-	 * @return The view for edit a recipe
-	 */
-	@GetMapping("/recipe/{id}/edit")
-	public String SubmitRecipe(@PathVariable String id, Model model) {
-		model.addAttribute("recipe", rDAO.findById(Integer.parseInt(id)).get());
-		model.addAttribute("categories", cDAO.getCategories());
-		model.addAttribute("category", new Category());
-		return "recipes/submit-recipe";
-	}
-	
-	/**
-	 * Creates a new Recipe
-	 * @param recipe The new recipe
-	 * @return The view /recipe
-	 */
-	@PostMapping("/submit-recipe")
-	public String createRecipe(@ModelAttribute Recipe recipe) {
-		rDAO.save(recipe);
-		return "redirect:/recipes";
 	}
 	
 	/**
@@ -149,6 +120,34 @@ public class RecipeController {
 		} catch(Exception ex) {
 			return new Recipe();
 		}
+	}
+	
+	@Autowired
+	IngredientDAO iDao;
+	
+	@GetMapping("/recipe/search")
+	public String getRecipeCor(@RequestParam (value="query") String query, Model model) {
+		Iterable<Ingredient> ingredients = iDao.findByNameContains(query);
+		List<Recipe> recipesList = new ArrayList<>();
+		
+		for(Ingredient ingredient : ingredients) {
+			System.out.println("Ingredient => " + ingredient);
+			Iterable<Recipe> recipes = rDAO.findByIngredient(ingredient);
+			recipes.iterator().forEachRemaining(recipesList::add);
+		}
+		
+		List<Recipe> recipesFiltered = new ArrayList<>();
+		
+		for(Recipe recipe : recipesList) {
+			if(!recipesFiltered.contains(recipe))
+				recipesFiltered.add(recipe);
+		}
+
+		model.addAttribute("searchword", query);
+		model.addAttribute("recipes", recipesFiltered);
+		model.addAttribute("recipe", new Recipe());
+		return "recipes/searchresult";
+		
 	}
 
 }

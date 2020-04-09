@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.FoodGroupDAO;
 import com.GoCook.Boundaries.IngredientDAO;
+import com.GoCook.Boundaries.RecipeDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.FoodGroup;
 import com.GoCook.Entities.Ingredient;
+import com.GoCook.Entities.Recipe;
 
 
 /**
@@ -27,8 +31,12 @@ public class IngredientController {
 	
 	@Autowired
 	IngredientDAO iDAO;
+	
 	@Autowired
 	FoodGroupDAO fgDAO;
+	
+	@Autowired
+	RecipeDAO rDAO;
 	
 	/**
 	 * Maps the /ingredients (list of all ingredients)
@@ -86,6 +94,7 @@ public class IngredientController {
 		iDAO.save(ingredient_db);
 		return "redirect:/ingredients";
 	}
+	
 
 	/**
 	 * Return a ingredient object from an id

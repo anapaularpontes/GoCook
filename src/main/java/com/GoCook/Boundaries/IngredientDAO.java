@@ -16,4 +16,6 @@ public interface IngredientDAO extends CrudRepository<Ingredient, Integer> {
 
 	@Query("SELECT i FROM Ingredient i WHERE i.active = true ORDER BY i.name ASC")
 	Iterable<Ingredient> getAllIngredients();
+	
+	Iterable<Ingredient> findByNameContains(String name);
 }
