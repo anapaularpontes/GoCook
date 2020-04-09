@@ -98,7 +98,7 @@ public class CategoryController {
 	@GetMapping("/category/{id}/search")
 	public String getRecipeByCategory(@PathVariable String id, Model model) {
 		Category c = cDAO.findById(Integer.parseInt(id)).get();
-		model.addAttribute("category", c);
+		model.addAttribute("searchword", c.getName());
 		model.addAttribute("recipes", rDAO.findByCategory(Integer.parseInt(id)));
 		model.addAttribute("recipe", new Recipe());
 		return "recipes/searchresult";
