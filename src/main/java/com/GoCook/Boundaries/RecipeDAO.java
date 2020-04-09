@@ -24,4 +24,21 @@ public interface RecipeDAO extends CrudRepository<Recipe, Integer> {
 	@Query("SELECT r FROM Recipe r JOIN r.categories c WHERE " +
 			"c.id = :catId ORDER BY r.title ASC")
 	Iterable<Recipe> findByCategory(@Param("catId") int catId);
+	
+	@Query("SELECT r FROM Recipe r"
+			+ " JOIN r.qty_ingredients qi"
+			+ " JOIN qi.ingredient i"
+			+ " WHERE i.name LIKE %:ingrSearch%"
+			+ " ORDER BY r.title ASC")
+	Iterable<Recipe> findByIngredient(@Param("ingrSearch") String ingrSearch);
+	
+	
+	/*@Query(value="SELECT * FROM Recipe r"
+			+ " JOIN ingredient_recipe ir ON r.recipe_id=ir.recipe_id"
+			+ " JOIN ingredients i ON i.ingredient_id=ir.ingredient_id"
+			+ " WHERE i.ingredient_name LIKE '%:ingrSearch%'"
+			+ " ORDER BY title ASC", nativeQuery = true)
+	Iterable<Recipe> findByIngredient(@Param("ingrSearch") String ingrSearch);*/
+
+    
 }

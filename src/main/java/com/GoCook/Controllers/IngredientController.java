@@ -9,12 +9,16 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.GoCook.Boundaries.FoodGroupDAO;
 import com.GoCook.Boundaries.IngredientDAO;
+import com.GoCook.Boundaries.RecipeDAO;
+import com.GoCook.Entities.Category;
 import com.GoCook.Entities.FoodGroup;
 import com.GoCook.Entities.Ingredient;
+import com.GoCook.Entities.Recipe;
 
 
 /**
@@ -27,8 +31,12 @@ public class IngredientController {
 	
 	@Autowired
 	IngredientDAO iDAO;
+	
 	@Autowired
 	FoodGroupDAO fgDAO;
+	
+	@Autowired
+	RecipeDAO rDAO;
 	
 	/**
 	 * Maps the /ingredients (list of all ingredients)
@@ -85,6 +93,21 @@ public class IngredientController {
 		ingredient_db.setActive(false);
 		iDAO.save(ingredient_db);
 		return "redirect:/ingredients";
+	}
+	
+	
+	/**
+	 * 
+	 * @param ingredient The ingredient name
+	 * @param model The model to be sent to the view
+	 * @return the view for the recipes of a ingredient
+	 */
+	@GetMapping("/ingredient/search")
+	public String getRecipeByIngredient(@RequestParam (value="search") String ingredient, Model model) {
+		model.addAttribute("searchword", ingredient);
+		model.addAttribute("recipes", rDAO.findByIngredient(ingredient));
+		model.addAttribute("recipe", new Recipe());
+		return "recipes/searchresult";
 	}
 
 	/**

@@ -23,7 +23,6 @@
 								</li>
 							</ul>
 						</li>
-						<li><a href="category.html">Search by Ingredient</a></li>
 						<li><a href="#">Database</a>
 							<ul class="dropdown-menu-col-1" style="list-style-type:none">
 								<li><a class="nav-link" href="/categories">Categories</a></li>
@@ -38,21 +37,35 @@
 					</ul>
 				</nav>
 
-				<div class="nav-action-elements-layout1">
+				<!--  <div class="nav-action-elements-layout1">
 					<ul>
-            <li><a href="submit-recipe.html" class="fill-btn">SUBMIT RECIPE</a></li>
+            			<li><a href="submit-recipe.html" class="fill-btn">SUBMIT RECIPE</a></li>
 					</ul>
-				</div>
+				</div> -->
 
 			</div>
 		</div>
 	</div>
-	<div class="header-bottom d-none d-lg-block">
-		<div class="container">
-			<div class="site-logo-desktop">
-				<a class="navlink" href="/"><img th:src="@{/img/gocook-logo.png}" class="rounded mx-auto d-block" alt="Site Logo"></a>
-			</div>
+	<div class="container">
+		<div class="header-bottom d-none d-lg-block">
+				<div class="site-logo-desktop">
+					<a class="navlink" href="/"><img
+						th:src="@{/img/gocook-logo.png}" class="rounded mx-auto d-block"
+						alt="Site Logo"></a>
+				</div>
+			
 		</div>
 	</div>
-	
+	<div style="line-height:2;">&nbsp;</div>
+	<div class="container">
+		<div class="header-search-box">
+			<form class="search-form" th:object="${ingredient}"
+				th:action="@{/ingredient/search}" method="get">
+				<input type="text" name="search" id="search" th:value="${search}"
+					placeholder="Search by ingredient..." />
+				<button type="submit" value="Search" class="fill-btn">Search</button>
+			</form>
+		</div>
+	</div>
 </header>
+<div style="line-height:2;">&nbsp;</div>	
